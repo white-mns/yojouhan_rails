@@ -12,7 +12,7 @@
   
 OS:CentOS release 6.5 (Final)  
 DB:MySQL  
-Ruby:2.4.0
+Ruby:2.4.0  
 Rails:4.2.10
 
 ## 使い方
