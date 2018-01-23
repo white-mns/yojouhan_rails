@@ -1,0 +1,28 @@
+<h1>四城半データ小屋</h1>
+<p>このサイトでは<a href="http://blacktea.sakura.ne.jp/teaconvini/" target="_blank">四畳半魔王城～本日営業中！～</a>を解析して得られる情報を扱っています。<br>
+データ更新は本家の圧縮結果が公開されてから行います。</p><br>
+<p>第<%= @last_result %>回更新結果まで反映済です。</p>
+
+<div class="col-lg-12">
+  <div class="bs-component">
+    <div class="well well-sm">
+      <h2>サイトマップ</h2>
+      <ul>
+        <li>個人データ</li>
+	    <ul>
+          <li><%= link_to "アイテム一覧", items_path %></li>
+        </ul>
+      </ul>
+    </div>
+    <div class="well well-sm">
+      <h2>更新履歴</h2>
+      <ul>
+        <li>2018/1/21</li>
+        <ul>
+          <li><%= link_to "アイテム一覧", items_path %>を公開</li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</div>
+

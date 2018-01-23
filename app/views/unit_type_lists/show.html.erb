@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @unit_type_list.type_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @unit_type_list.name %>
+</p>
+
+<%= link_to 'Edit', edit_unit_type_list_path(@unit_type_list) %> |
+<%= link_to 'Back', unit_type_lists_path %>

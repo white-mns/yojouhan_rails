@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Result no:</strong>
+  <%= @item.result_no %>
+</p>
+
+<p>
+  <strong>Generate no:</strong>
+  <%= @item.generate_no %>
+</p>
+
+<p>
+  <strong>E no:</strong>
+  <%= @item.e_no %>
+</p>
+
+<p>
+  <strong>I no:</strong>
+  <%= @item.i_no %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @item.type %>
+</p>
+
+<p>
+  <strong>Orig name:</strong>
+  <%= @item.orig_name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Strength:</strong>
+  <%= @item.strength %>
+</p>
+
+<p>
+  <strong>Fuka1:</strong>
+  <%= @item.fuka1 %>
+</p>
+
+<p>
+  <strong>Fuka2:</strong>
+  <%= @item.fuka2 %>
+</p>
+
+<p>
+  <strong>Guard elemental:</strong>
+  <%= @item.guard_elemental %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @item.stock %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @item.value %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

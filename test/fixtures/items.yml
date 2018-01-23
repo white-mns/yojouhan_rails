@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  i_no: 1
+  type: 1
+  orig_name: 1
+  name: MyString
+  strength: 1
+  fuka1: 1
+  fuka2: 1
+  guard_elemental: 1
+  stock: 1
+  value: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  i_no: 1
+  type: 1
+  orig_name: 1
+  name: MyString
+  strength: 1
+  fuka1: 1
+  fuka2: 1
+  guard_elemental: 1
+  stock: 1
+  value: 1
