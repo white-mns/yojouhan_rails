@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '~> 4.2'
 
 group :development do
   gem 'better_errors'
@@ -56,7 +56,6 @@ end
  gem 'capistrano', group: :development
 
 # Use debugger
- gem 'debugger', group: [:development, :test]
  gem 'mysql2'
  gem 'rb-readline', '~> 0.4.2'
  gem 'hirb-unicode'

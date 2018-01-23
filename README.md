@@ -12,8 +12,8 @@
   
 OS:CentOS release 6.5 (Final)  
 DB:MySQL  
-Ruby:2.0.0
-Rails:4.0.2
+Ruby:2.4.0
+Rails:4.2.10
 
 ## 使い方
 ・Railsの使い方を調べてなんやかんやして自分のRailsアプリが動くようにします。  
