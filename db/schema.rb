@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124130759) do
+ActiveRecord::Schema.define(version: 20180124151905) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -31,6 +31,41 @@ ActiveRecord::Schema.define(version: 20180124130759) do
 
   add_index "elemental_lists", ["elemental_id"], name: "index_elemental_lists_on_elemental_id", using: :btree
   add_index "elemental_lists", ["name"], name: "index_elemental_lists_on_name", using: :btree
+
+  create_table "fortress_data", force: :cascade do |t|
+    t.integer  "result_no",   limit: 4
+    t.integer  "generate_no", limit: 4
+    t.integer  "e_no",        limit: 4
+    t.integer  "grand",       limit: 4
+    t.integer  "caution",     limit: 4
+    t.integer  "continuance", limit: 4
+    t.integer  "enthusiasm",  limit: 4
+    t.integer  "goodwill",    limit: 4
+    t.integer  "forecast",    limit: 4
+    t.integer  "stock",       limit: 4
+    t.integer  "high_grade",  limit: 4
+    t.integer  "mob",         limit: 4
+    t.integer  "drink",       limit: 4
+    t.integer  "regalia",     limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "fortress_data", ["caution"], name: "index_fortress_data_on_caution", using: :btree
+  add_index "fortress_data", ["continuance"], name: "index_fortress_data_on_continuance", using: :btree
+  add_index "fortress_data", ["drink"], name: "index_fortress_data_on_drink", using: :btree
+  add_index "fortress_data", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "fortress_data", ["e_no"], name: "index_fortress_data_on_e_no", using: :btree
+  add_index "fortress_data", ["enthusiasm"], name: "index_fortress_data_on_enthusiasm", using: :btree
+  add_index "fortress_data", ["forecast"], name: "index_fortress_data_on_forecast", using: :btree
+  add_index "fortress_data", ["generate_no"], name: "index_fortress_data_on_generate_no", using: :btree
+  add_index "fortress_data", ["goodwill"], name: "index_fortress_data_on_goodwill", using: :btree
+  add_index "fortress_data", ["grand"], name: "index_fortress_data_on_grand", using: :btree
+  add_index "fortress_data", ["high_grade"], name: "index_fortress_data_on_high_grade", using: :btree
+  add_index "fortress_data", ["mob"], name: "index_fortress_data_on_mob", using: :btree
+  add_index "fortress_data", ["regalia"], name: "index_fortress_data_on_regalia", using: :btree
+  add_index "fortress_data", ["result_no"], name: "index_fortress_data_on_result_no", using: :btree
+  add_index "fortress_data", ["stock"], name: "index_fortress_data_on_stock", using: :btree
 
   create_table "fuka_lists", force: :cascade do |t|
     t.integer  "fuka_id",    limit: 4
@@ -85,6 +120,16 @@ ActiveRecord::Schema.define(version: 20180124130759) do
   add_index "names", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
   add_index "names", ["name"], name: "index_names_on_name", using: :btree
   add_index "names", ["nickname"], name: "index_names_on_nickname", using: :btree
+
+  create_table "regalia_lists", force: :cascade do |t|
+    t.integer  "regalia_id", limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "regalia_lists", ["name"], name: "index_regalia_lists_on_name", using: :btree
+  add_index "regalia_lists", ["regalia_id"], name: "index_regalia_lists_on_regalia_id", using: :btree
 
   create_table "statuses", force: :cascade do |t|
     t.integer  "result_no",    limit: 4
