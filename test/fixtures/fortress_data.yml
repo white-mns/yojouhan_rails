@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  grand: 1
+  caution: 1
+  continuance: 1
+  enthusiasm: 1
+  goodwill: 1
+  forecast: 1
+  stock: 1
+  high_grade: 1
+  mob: 1
+  drink: 1
+  regalia: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  grand: 1
+  caution: 1
+  continuance: 1
+  enthusiasm: 1
+  goodwill: 1
+  forecast: 1
+  stock: 1
+  high_grade: 1
+  mob: 1
+  drink: 1
+  regalia: 1

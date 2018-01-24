@@ -1,0 +1,1 @@
+json.extract! @fortress_datum, :id, :result_no, :generate_no, :e_no, :grand, :caution, :continuance, :enthusiasm, :goodwill, :forecast, :stock, :high_grade, :mob, :drink, :regalia, :created_at, :updated_at

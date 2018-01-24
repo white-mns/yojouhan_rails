@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Regalia:</strong>
+  <%= @regalia_list.regalia_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @regalia_list.name %>
+</p>
+
+<%= link_to 'Edit', edit_regalia_list_path(@regalia_list) %> |
+<%= link_to 'Back', regalia_lists_path %>
