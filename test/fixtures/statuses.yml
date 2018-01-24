@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  acc_profit: 1
+  rp: 1
+  repute: 1
+  charm: 1
+  tact: 1
+  smile: 1
+  elegance: 1
+  knowledge: 1
+  perseverance: 1
+  funds: 1
+  exp: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  acc_profit: 1
+  rp: 1
+  repute: 1
+  charm: 1
+  tact: 1
+  smile: 1
+  elegance: 1
+  knowledge: 1
+  perseverance: 1
+  funds: 1
+  exp: 1

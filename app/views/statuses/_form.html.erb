@@ -1,0 +1,73 @@
+<%= form_for(@status) do |f| %>
+  <% if @status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
+
+      <ul>
+      <% @status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result_no %><br>
+    <%= f.number_field :result_no %>
+  </div>
+  <div class="field">
+    <%= f.label :generate_no %><br>
+    <%= f.number_field :generate_no %>
+  </div>
+  <div class="field">
+    <%= f.label :e_no %><br>
+    <%= f.number_field :e_no %>
+  </div>
+  <div class="field">
+    <%= f.label :acc_profit %><br>
+    <%= f.number_field :acc_profit %>
+  </div>
+  <div class="field">
+    <%= f.label :rp %><br>
+    <%= f.number_field :rp %>
+  </div>
+  <div class="field">
+    <%= f.label :repute %><br>
+    <%= f.number_field :repute %>
+  </div>
+  <div class="field">
+    <%= f.label :charm %><br>
+    <%= f.number_field :charm %>
+  </div>
+  <div class="field">
+    <%= f.label :tact %><br>
+    <%= f.number_field :tact %>
+  </div>
+  <div class="field">
+    <%= f.label :smile %><br>
+    <%= f.number_field :smile %>
+  </div>
+  <div class="field">
+    <%= f.label :elegance %><br>
+    <%= f.number_field :elegance %>
+  </div>
+  <div class="field">
+    <%= f.label :knowledge %><br>
+    <%= f.number_field :knowledge %>
+  </div>
+  <div class="field">
+    <%= f.label :perseverance %><br>
+    <%= f.number_field :perseverance %>
+  </div>
+  <div class="field">
+    <%= f.label :funds %><br>
+    <%= f.number_field :funds %>
+  </div>
+  <div class="field">
+    <%= f.label :exp %><br>
+    <%= f.number_field :exp %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
