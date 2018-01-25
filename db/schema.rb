@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124151905) do
+ActiveRecord::Schema.define(version: 20180125135041) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -21,6 +21,27 @@ ActiveRecord::Schema.define(version: 20180124151905) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "castle_condition_lists", force: :cascade do |t|
+    t.integer  "castle_condition_id", limit: 4
+    t.string   "name",                limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "castle_condition_lists", ["castle_condition_id"], name: "index_castle_condition_lists_on_castle_condition_id", using: :btree
+  add_index "castle_condition_lists", ["name"], name: "index_castle_condition_lists_on_name", using: :btree
+
+  create_table "castle_condition_texts", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.text     "condition_text", limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "castle_condition_texts", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
 
   create_table "elemental_lists", force: :cascade do |t|
     t.integer  "elemental_id", limit: 4
@@ -66,6 +87,26 @@ ActiveRecord::Schema.define(version: 20180124151905) do
   add_index "fortress_data", ["regalia"], name: "index_fortress_data_on_regalia", using: :btree
   add_index "fortress_data", ["result_no"], name: "index_fortress_data_on_result_no", using: :btree
   add_index "fortress_data", ["stock"], name: "index_fortress_data_on_stock", using: :btree
+
+  create_table "fortress_guards", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.integer  "pysics",         limit: 4
+    t.integer  "electric_shock", limit: 4
+    t.integer  "cold",           limit: 4
+    t.integer  "flame",          limit: 4
+    t.integer  "saint_devil",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "fortress_guards", ["cold"], name: "index_fortress_guards_on_cold", using: :btree
+  add_index "fortress_guards", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "fortress_guards", ["electric_shock"], name: "index_fortress_guards_on_electric_shock", using: :btree
+  add_index "fortress_guards", ["flame"], name: "index_fortress_guards_on_flame", using: :btree
+  add_index "fortress_guards", ["pysics"], name: "index_fortress_guards_on_pysics", using: :btree
+  add_index "fortress_guards", ["saint_devil"], name: "index_fortress_guards_on_saint_devil", using: :btree
 
   create_table "fuka_lists", force: :cascade do |t|
     t.integer  "fuka_id",    limit: 4

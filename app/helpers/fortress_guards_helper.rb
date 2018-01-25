@@ -1,0 +1,2 @@
+module FortressGuardsHelper
+end
