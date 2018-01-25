@@ -42,7 +42,7 @@
     <td class="formText"><%%= text_field_tag :p_name_form, @p_name_form %></td></tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
   <tr><td><%%= f.label :<%= attribute.name %>_form, '<%= attribute.human_name %>' %></td>
-    <td class="formText"><%%= text_field_tag :<%= attribute.name %>_form, @<%= attribute.name %>_form %></td></tr>
+    <td class="formNum"><%%= text_field_tag :<%= attribute.name %>_form, @<%= attribute.name %>_form %></td></tr>
 <% end -%>
   <tr><td></td><td>
     <%%= f.submit '検索する' %>

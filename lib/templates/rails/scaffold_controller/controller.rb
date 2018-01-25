@@ -25,7 +25,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     reference_number_assign(params, "e_no", "e_no_form")
     reference_word_assign(params, "p_name_name", "p_name_form", "cont")
     <% attributes.reject(&:password_digest?).each do |attribute| -%>
-    reference_word_assign(params, "<%= attribute.name %>", "<%= attribute.name %>_form", "cont")
+    reference_number_assign(params, "<%= attribute.name %>", "<%= attribute.name %>_form")
     <% end -%>
     
     @p_name_form = params["p_name_form"]
