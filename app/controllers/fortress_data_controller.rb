@@ -10,6 +10,14 @@ class FortressDataController < ApplicationController
     @search.sorts = 'id asc' if @search.sorts.empty?
     @fortress_datum	= @search.result.per(50)
   end
+  
+  def all_data
+    param_set
+    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition]).search(params[:q]).result.count()
+    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition]).page(params[:page]).search(params[:q])
+    @search.sorts = 'id asc' if @search.sorts.empty?
+    @fortress_datum	= @search.result.per(50)
+  end
 
   def param_set
     last_result = Name.maximum('result_no')
@@ -29,7 +37,13 @@ class FortressDataController < ApplicationController
     reference_number_assign(params, "high_grade", "high_grade_form")
     reference_number_assign(params, "mob", "mob_form")
     reference_number_assign(params, "drink", "drink_form")
+    reference_number_assign(params, "guard_pysics", "pysics_form")
+    reference_number_assign(params, "guard_electric_shock", "electric_shock_form")
+    reference_number_assign(params, "guard_cold", "cold_form")
+    reference_number_assign(params, "guard_flame", "flame_form")
+    reference_number_assign(params, "guard_saint_devil", "saint_devil_form")
     reference_word_assign(params, "regalia_name_name", "regalia_form", "cont")
+    reference_word_assign(params, "castle_condition_condition_text", "condition_text_form","cont")
         
     @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
@@ -43,7 +57,13 @@ class FortressDataController < ApplicationController
     @high_grade_form = params["high_grade_form"]
     @mob_form = params["mob_form"]
     @drink_form = params["drink_form"]
+    @pysics_form = params["pysics_form"]
+    @electric_shock_form = params["electric_shock_form"]
+    @cold_form = params["cold_form"]
+    @flame_form = params["flame_form"]
+    @saint_devil_form = params["saint_devil_form"]
     @regalia_form = params["regalia_form"]
+    @condition_text_form = params["condition_text_form"]
   end
   # GET /fortress_data/1
   #def show
