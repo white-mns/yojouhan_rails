@@ -1,4 +1,5 @@
 Loe::Application.routes.draw do
+  resources :fortress_guards
   resources :regalia_lists
   resources :fortress_data
   resources :statuses
