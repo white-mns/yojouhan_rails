@@ -1,4 +1,6 @@
 Loe::Application.routes.draw do
+  get "fortress_data/all_data",    :to => "fortress_data#all_data",     :as => 'fortress_all_data' 
+
   resources :castle_condition_texts
   resources :castle_condition_lists
   resources :fortress_guards
