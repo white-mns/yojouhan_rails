@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125132550) do
+ActiveRecord::Schema.define(version: 20180125135041) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20180125132550) do
 
   add_index "castle_condition_lists", ["castle_condition_id"], name: "index_castle_condition_lists_on_castle_condition_id", using: :btree
   add_index "castle_condition_lists", ["name"], name: "index_castle_condition_lists_on_name", using: :btree
+
+  create_table "castle_condition_texts", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.text     "condition_text", limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "castle_condition_texts", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
 
   create_table "elemental_lists", force: :cascade do |t|
     t.integer  "elemental_id", limit: 4

@@ -1,4 +1,5 @@
 Loe::Application.routes.draw do
+  resources :castle_condition_texts
   resources :castle_condition_lists
   resources :fortress_guards
   resources :regalia_lists
