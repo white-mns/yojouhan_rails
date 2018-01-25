@@ -1,0 +1,2 @@
+module CastleConditionListsHelper
+end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Castle condition:</strong>
+  <%= @castle_condition_list.castle_condition_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @castle_condition_list.name %>
+</p>
+
+<%= link_to 'Edit', edit_castle_condition_list_path(@castle_condition_list) %> |
+<%= link_to 'Back', castle_condition_lists_path %>
