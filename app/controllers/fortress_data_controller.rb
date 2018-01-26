@@ -21,7 +21,7 @@ class FortressDataController < ApplicationController
 
   def param_set
     last_result = Name.maximum('result_no')
-    @result_no_form = params["result_no_form"] ? params["result_no_form"] : last_result
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")
@@ -45,6 +45,7 @@ class FortressDataController < ApplicationController
     reference_word_assign(params, "regalia_name_name", "regalia_form", "cont")
     reference_word_assign(params, "castle_condition_condition_text", "condition_text_form","cont")
         
+    @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
     @grand_form = params["grand_form"]
