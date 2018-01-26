@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def param_set
     last_result = Name.maximum('result_no')
-    @result_no_form = params["result_no_form"] ? params["result_no_form"] : last_result
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")
@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
     reference_number_assign(params, "stock", "stock_form")
     reference_number_assign(params, "value", "value_form")
     
+    @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
     @i_no_form = params["i_no_form"]

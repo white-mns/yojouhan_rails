@@ -13,7 +13,7 @@ class FortressGuardsController < ApplicationController
 
   def param_set
     last_result = Name.maximum('result_no')
-    @result_no_form = params["result_no_form"] ? params["result_no_form"] : last_result
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")
@@ -25,6 +25,7 @@ class FortressGuardsController < ApplicationController
     reference_number_assign(params, "flame", "flame_form")
     reference_number_assign(params, "saint_devil", "saint_devil_form")
         
+    @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
     @pysics_form = params["pysics_form"]

@@ -13,7 +13,7 @@ class CastleConditionTextsController < ApplicationController
 
   def param_set
     last_result = Name.maximum('result_no')
-    @result_no_form = params["result_no_form"] ? params["result_no_form"] : last_result
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")
@@ -21,6 +21,7 @@ class CastleConditionTextsController < ApplicationController
     reference_word_assign(params, "p_name_name", "p_name_form", "cont")
     reference_word_assign(params, "condition_text", "condition_text_form","cont")
         
+    @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
     @condition_text_form = params["condition_text_form"]

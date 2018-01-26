@@ -18,7 +18,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def param_set
     last_result = Name.maximum('result_no')
-    @result_no_form = params["result_no_form"] ? params["result_no_form"] : last_result
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")
