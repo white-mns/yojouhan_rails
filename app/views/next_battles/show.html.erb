@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Result no:</strong>
+  <%= @next_battle.result_no %>
+</p>
+
+<p>
+  <strong>Generate no:</strong>
+  <%= @next_battle.generate_no %>
+</p>
+
+<p>
+  <strong>Block no:</strong>
+  <%= @next_battle.block_no %>
+</p>
+
+<p>
+  <strong>E no:</strong>
+  <%= @next_battle.e_no %>
+</p>
+
+<%= link_to 'Edit', edit_next_battle_path(@next_battle) %> |
+<%= link_to 'Back', next_battles_path %>
