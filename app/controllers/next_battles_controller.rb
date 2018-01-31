@@ -5,8 +5,8 @@ class NextBattlesController < ApplicationController
   # GET /next_battles
   def index
     param_set
-    @count	= NextBattle.includes([:p_name]).search(params[:q]).result.count()
-    @search	= NextBattle.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition]).search(params[:q]).result.count()
+    @search	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @next_battles	= @search.result.per(50)
   end
@@ -20,12 +20,18 @@ class NextBattlesController < ApplicationController
     reference_number_assign(params, "e_no", "e_no_form")
     reference_word_assign(params, "p_name_name", "p_name_form", "cont")
     reference_number_assign(params, "block_no", "block_no_form")
+    reference_number_assign(params, "status_acc_profit", "acc_profit_form")
+    reference_number_assign(params, "status_rp", "rp_form")
+    reference_word_assign(params, "fortress_data_regalia_name_name", "regalia_form", "cont")
         
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
     @generate_no_form = params["generate_no_form"]
     @block_no_form = params["block_no_form"]
     @e_no_form = params["e_no_form"]
+    @acc_profit_form = params["acc_profit_form"]
+    @rp_form = params["rp_form"]
+    @regalia_form = params["regalia_form"]
   end
   # GET /next_battles/1
   #def show

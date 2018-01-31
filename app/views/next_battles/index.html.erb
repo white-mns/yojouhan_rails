@@ -42,6 +42,12 @@
     <td class="formNum"><%= text_field_tag :block_no_form, @block_no_form %></td></tr>
   <tr><td><%= f.label :p_name_form, 'キャラクター名' %></td>
     <td class="formText"><%= text_field_tag :p_name_form, @p_name_form %></td></tr>
+  <tr><td><%= f.label :acc_profit_form, '累積粗利' %></td>
+    <td class="formNum"><%= text_field_tag :acc_profit_form, @acc_profit_form %></td></tr>
+  <tr><td><%= f.label :rp_form, 'RP' %></td>
+    <td class="formNum"><%= text_field_tag :rp_form, @rp_form %></td></tr>
+  <tr><td><%= f.label :regalia_form, 'レガリア' %></td>
+    <td class="formText"><%= text_field_tag :regalia_form, @regalia_form %></td></tr>
   <tr><td></td><td>
     <%= f.submit '検索する' %>
     </td></tr>
@@ -63,6 +69,9 @@
       <th><%= sort_link(@search, :result_no,'更新回', default_order: :desc) %></th>
       <th><%= sort_link(@search, :block_no, 'ブロック', default_order: :desc) %></th>
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :block_no, '累積粗利', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :block_no, 'RP', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :block_no, 'レガリア', default_order: :desc) %></th>
       <th>結果リンク</th>
     </tr>
   </thead>
@@ -73,6 +82,9 @@
         <td><%= next_battle.result_no %></td>
         <td><%= next_battle.block_no %></td>
         <td><%= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")" %></td>
+        <td><%= next_battle.status.acc_profit %></td>
+        <td><%= next_battle.status.rp %></td>
+        <td><%= next_battle.fortress_data.regalia_name.name %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",next_battle.e_no)+".html", :target => "_blank" %></td>
       </tr>
     <% end %>
