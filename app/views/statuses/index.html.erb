@@ -33,36 +33,36 @@
 <table id="search_table" class="table table-striped table-bordered table-hover">
 
   <tbody>
-  <tr><td colspan="2" style="cursor:pointer;" onclick="search_open(false);">絞り込み検索<span style="font-size:80%">(クリックで閉じます)</span></td></tr>
+  <tr><td colspan="4" style="cursor:pointer;" onclick="search_open(false);">絞り込み検索<span style="font-size:80%">(クリックで閉じます)</span></td></tr>
   <tr><td><%= f.label :result_no_form, '更新回' %></td>
-    <td class="formNum"><%= text_field_tag :result_no_form, @result_no_form %></td></tr>
+    <td colspan="3" class="formNum"><%= text_field_tag :result_no_form, @result_no_form %></td></tr>
   <tr><td><%= f.label :e_no_form, 'Eno' %></td>
-    <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td></tr>
-  <tr><td><%= f.label :p_name_form, 'キャラクター名' %></td>
+    <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td>
+  <td><%= f.label :p_name_form, 'キャラクター名' %></td>
     <td class="formText"><%= text_field_tag :p_name_form, @p_name_form %></td></tr>
   <tr><td><%= f.label :acc_profit_form, '累積粗利' %></td>
-    <td class="formNum"><%= text_field_tag :acc_profit_form, @acc_profit_form %></td></tr>
+    <td colspan="3" class="formNum"><%= text_field_tag :acc_profit_form, @acc_profit_form %></td></tr>
   <tr><td><%= f.label :rp_form, 'RP' %></td>
-    <td class="formNum"><%= text_field_tag :rp_form, @rp_form %></td></tr>
+    <td colspan="3" class="formNum"><%= text_field_tag :rp_form, @rp_form %></td></tr>
   <tr><td><%= f.label :repute_form, '評判' %></td>
-    <td class="formNum"><%= text_field_tag :repute_form, @repute_form %></td></tr>
+    <td colspan="3" class="formNum"><%= text_field_tag :repute_form, @repute_form %></td></tr>
   <tr><td><%= f.label :charm_form, '魅力' %></td>
-    <td class="formNum"><%= text_field_tag :charm_form, @charm_form %></td></tr>
-  <tr><td><%= f.label :tact_form, '機転' %></td>
+    <td class="formNum"><%= text_field_tag :charm_form, @charm_form %></td>
+  <td><%= f.label :tact_form, '機転' %></td>
     <td class="formNum"><%= text_field_tag :tact_form, @tact_form %></td></tr>
   <tr><td><%= f.label :smile_form, '笑顔' %></td>
-    <td class="formNum"><%= text_field_tag :smile_form, @smile_form %></td></tr>
-  <tr><td><%= f.label :elegance_form, '気品' %></td>
+    <td class="formNum"><%= text_field_tag :smile_form, @smile_form %></td>
+  <td><%= f.label :elegance_form, '気品' %></td>
     <td class="formNum"><%= text_field_tag :elegance_form, @elegance_form %></td></tr>
   <tr><td><%= f.label :knowledge_form, '知識' %></td>
-    <td class="formNum"><%= text_field_tag :knowledge_form, @knowledge_form %></td></tr>
-  <tr><td><%= f.label :perseverance_form, '忍耐' %></td>
+    <td class="formNum"><%= text_field_tag :knowledge_form, @knowledge_form %></td>
+  <td><%= f.label :perseverance_form, '忍耐' %></td>
     <td class="formNum"><%= text_field_tag :perseverance_form, @perseverance_form %></td></tr>
   <tr><td><%= f.label :funds_form, '所持資金' %></td>
-    <td class="formNum"><%= text_field_tag :funds_form, @funds_form %></td></tr>
+    <td colspan="3" class="formNum"><%= text_field_tag :funds_form, @funds_form %></td></tr>
   <tr><td><%= f.label :exp_form, '経験値' %></td>
-    <td class="formNum"><%= text_field_tag :exp_form, @exp_form %></td></tr>
-  <tr><td></td><td>
+    <td colspan="3" class="formNum"><%= text_field_tag :exp_form, @exp_form %></td></tr>
+  <tr><td></td><td colspan="3">
     <%= f.submit '検索する' %>
     </td></tr>
 </tbody>
