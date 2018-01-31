@@ -74,6 +74,8 @@
     <td class="formText"><%= text_field_tag :regalia_form, @regalia_form %></td></tr>
   <tr><td><%= f.label :condition_text_form, '城状況' %></td>
     <td class="formText"><%= text_field_tag :condition_text_form, @condition_text_form %></td></tr>
+  <tr><td><%= f.label :block_no_form, '次回のブロック番号' %></td>
+    <td class="formNum"><%= text_field_tag :block_no_form, @block_no_form %></td></tr>
   <tr><td></td><td>
     <%= f.submit '検索する' %>
     </td></tr>
