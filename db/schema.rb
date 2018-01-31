@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125135041) do
+ActiveRecord::Schema.define(version: 20180129144450) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -161,6 +161,18 @@ ActiveRecord::Schema.define(version: 20180125135041) do
   add_index "names", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
   add_index "names", ["name"], name: "index_names_on_name", using: :btree
   add_index "names", ["nickname"], name: "index_names_on_nickname", using: :btree
+
+  create_table "next_battles", force: :cascade do |t|
+    t.integer  "result_no",   limit: 4
+    t.integer  "generate_no", limit: 4
+    t.integer  "block_no",    limit: 4
+    t.integer  "e_no",        limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "next_battles", ["block_no"], name: "index_next_battles_on_block_no", using: :btree
+  add_index "next_battles", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
 
   create_table "regalia_lists", force: :cascade do |t|
     t.integer  "regalia_id", limit: 4

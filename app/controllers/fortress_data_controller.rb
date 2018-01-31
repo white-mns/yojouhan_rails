@@ -13,8 +13,8 @@ class FortressDataController < ApplicationController
   
   def all_data
     param_set
-    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition]).search(params[:q]).result.count()
-    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition]).page(params[:page]).search(params[:q])
+    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle]).search(params[:q]).result.count()
+    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @fortress_datum	= @search.result.per(50)
   end
@@ -44,6 +44,7 @@ class FortressDataController < ApplicationController
     reference_number_assign(params, "guard_saint_devil", "saint_devil_form")
     reference_word_assign(params, "regalia_name_name", "regalia_form", "cont")
     reference_word_assign(params, "castle_condition_condition_text", "condition_text_form","cont")
+    reference_number_assign(params, "next_battle_block_no", "block_no_form")
         
     @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
@@ -65,6 +66,7 @@ class FortressDataController < ApplicationController
     @saint_devil_form = params["saint_devil_form"]
     @regalia_form = params["regalia_form"]
     @condition_text_form = params["condition_text_form"]
+    @block_no_form = params["block_no_form"]
   end
   # GET /fortress_data/1
   #def show
