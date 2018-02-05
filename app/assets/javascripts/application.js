@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require "jquery.cleanQuery"
 //= require_tree .
 //
 
@@ -63,6 +64,8 @@ var turboReady = function(){
 		search_open(false);
         example_open(false);
 	}
+
+    $('FORM').cleanQuery();
 };
 
 $(document).on('turbolinks:load', turboReady);
