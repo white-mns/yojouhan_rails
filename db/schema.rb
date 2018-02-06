@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129144450) do
+ActiveRecord::Schema.define(version: 20180206135107) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -42,6 +42,20 @@ ActiveRecord::Schema.define(version: 20180129144450) do
   end
 
   add_index "castle_condition_texts", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+
+  create_table "castle_structures", force: :cascade do |t|
+    t.integer  "result_no",   limit: 4
+    t.integer  "generate_no", limit: 4
+    t.integer  "e_no",        limit: 4
+    t.integer  "frame_type",  limit: 4
+    t.integer  "i_no",        limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "castle_structures", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "castle_structures", ["frame_type"], name: "index_castle_structures_on_frame_type", using: :btree
+  add_index "castle_structures", ["i_no"], name: "index_castle_structures_on_i_no", using: :btree
 
   create_table "elemental_lists", force: :cascade do |t|
     t.integer  "elemental_id", limit: 4
@@ -107,6 +121,16 @@ ActiveRecord::Schema.define(version: 20180129144450) do
   add_index "fortress_guards", ["flame"], name: "index_fortress_guards_on_flame", using: :btree
   add_index "fortress_guards", ["pysics"], name: "index_fortress_guards_on_pysics", using: :btree
   add_index "fortress_guards", ["saint_devil"], name: "index_fortress_guards_on_saint_devil", using: :btree
+
+  create_table "frame_type_lists", force: :cascade do |t|
+    t.integer  "frame_type_id", limit: 4
+    t.string   "name",          limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "frame_type_lists", ["frame_type_id"], name: "index_frame_type_lists_on_frame_type_id", using: :btree
+  add_index "frame_type_lists", ["name"], name: "index_frame_type_lists_on_name", using: :btree
 
   create_table "fuka_lists", force: :cascade do |t|
     t.integer  "fuka_id",    limit: 4

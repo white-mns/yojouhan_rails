@@ -1,0 +1,25 @@
+<%= form_for(@frame_type_list) do |f| %>
+  <% if @frame_type_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@frame_type_list.errors.count, "error") %> prohibited this frame_type_list from being saved:</h2>
+
+      <ul>
+      <% @frame_type_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :frame_type_id %><br>
+    <%= f.number_field :frame_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
