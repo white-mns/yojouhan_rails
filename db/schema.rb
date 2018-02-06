@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206135107) do
+ActiveRecord::Schema.define(version: 20180206145618) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 20180206135107) do
   end
 
   add_index "castle_condition_texts", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+
+  create_table "castle_structure_major_type_nums", force: :cascade do |t|
+    t.integer  "result_no",   limit: 4
+    t.integer  "generate_no", limit: 4
+    t.integer  "e_no",        limit: 4
+    t.integer  "build_num",   limit: 4
+    t.integer  "guard_num",   limit: 4
+    t.integer  "goods_num",   limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "castle_structure_major_type_nums", ["build_num"], name: "index_castle_structure_major_type_nums_on_build_num", using: :btree
+  add_index "castle_structure_major_type_nums", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "castle_structure_major_type_nums", ["goods_num"], name: "index_castle_structure_major_type_nums_on_goods_num", using: :btree
+  add_index "castle_structure_major_type_nums", ["guard_num"], name: "index_castle_structure_major_type_nums_on_guard_num", using: :btree
 
   create_table "castle_structures", force: :cascade do |t|
     t.integer  "result_no",   limit: 4
