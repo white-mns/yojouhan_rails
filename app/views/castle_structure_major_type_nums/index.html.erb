@@ -1,4 +1,4 @@
-<h1>Listing castle_structure_major_type_nums</h1>
+<h1>分類別構成数一覧</h1>
 
 <div class="bs-docs-section">
   <div class="row">
@@ -40,17 +40,11 @@
     <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td></tr>
   <tr><td><%= f.label :p_name_form, 'キャラクター名' %></td>
     <td class="formText"><%= text_field_tag :p_name_form, @p_name_form %></td></tr>
-  <tr><td><%= f.label :result_no_form, 'Result no' %></td>
-    <td class="formNum"><%= text_field_tag :result_no_form, @result_no_form %></td></tr>
-  <tr><td><%= f.label :generate_no_form, 'Generate no' %></td>
-    <td class="formNum"><%= text_field_tag :generate_no_form, @generate_no_form %></td></tr>
-  <tr><td><%= f.label :e_no_form, 'E no' %></td>
-    <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td></tr>
-  <tr><td><%= f.label :build_num_form, 'Build num' %></td>
+  <tr><td><%= f.label :build_num_form, '建築構成数' %></td>
     <td class="formNum"><%= text_field_tag :build_num_form, @build_num_form %></td></tr>
-  <tr><td><%= f.label :guard_num_form, 'Guard num' %></td>
+  <tr><td><%= f.label :guard_num_form, '護衛構成数' %></td>
     <td class="formNum"><%= text_field_tag :guard_num_form, @guard_num_form %></td></tr>
-  <tr><td><%= f.label :goods_num_form, 'Goods num' %></td>
+  <tr><td><%= f.label :goods_num_form, '商品構成数' %></td>
     <td class="formNum"><%= text_field_tag :goods_num_form, @goods_num_form %></td></tr>
   <tr><td></td><td>
     <%= f.submit '検索する' %>
@@ -72,12 +66,9 @@
     <tr>
       <th><%= sort_link(@search, :result_no,'更新回', default_order: :desc) %></th>
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :result_no, 'Result no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :generate_no, 'Generate no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :e_no, 'E no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :build_num, 'Build num', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :guard_num, 'Guard num', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :goods_num, 'Goods num', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :build_num, '建築', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :guard_num, '護衛', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :goods_num, '商品', default_order: :desc) %></th>
       <th>結果リンク</th>
     </tr>
   </thead>
@@ -87,9 +78,6 @@
       <tr>
         <td><%= castle_structure_major_type_num.result_no %></td>
         <td><%= castle_structure_major_type_num.p_name.name.html_safe + "(" + sprintf("%d",castle_structure_major_type_num.e_no) + ")" %></td>
-        <td><%= castle_structure_major_type_num.result_no %></td>
-        <td><%= castle_structure_major_type_num.generate_no %></td>
-        <td><%= castle_structure_major_type_num.e_no %></td>
         <td><%= castle_structure_major_type_num.build_num %></td>
         <td><%= castle_structure_major_type_num.guard_num %></td>
         <td><%= castle_structure_major_type_num.goods_num %></td>

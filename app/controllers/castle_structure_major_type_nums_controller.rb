@@ -19,21 +19,17 @@ class CastleStructureMajorTypeNumsController < ApplicationController
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
     reference_word_assign(params, "p_name_name", "p_name_form", "cont")
-        reference_number_assign(params, "result_no", "result_no_form")
-        reference_number_assign(params, "generate_no", "generate_no_form")
-        reference_number_assign(params, "e_no", "e_no_form")
-        reference_number_assign(params, "build_num", "build_num_form")
-        reference_number_assign(params, "guard_num", "guard_num_form")
-        reference_number_assign(params, "goods_num", "goods_num_form")
+    reference_number_assign(params, "build_num", "build_num_form")
+    reference_number_assign(params, "guard_num", "guard_num_form")
+    reference_number_assign(params, "goods_num", "goods_num_form")
         
+    @result_no_form = params["result_no_form"]
+    @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
-        @result_no_form = params["result_no_form"]
-        @generate_no_form = params["generate_no_form"]
-        @e_no_form = params["e_no_form"]
-        @build_num_form = params["build_num_form"]
-        @guard_num_form = params["guard_num_form"]
-        @goods_num_form = params["goods_num_form"]
-      end
+    @build_num_form = params["build_num_form"]
+    @guard_num_form = params["guard_num_form"]
+    @goods_num_form = params["goods_num_form"]
+  end
   # GET /castle_structure_major_type_nums/1
   #def show
   #end
