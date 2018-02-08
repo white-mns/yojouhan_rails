@@ -62,6 +62,8 @@
     <td class="formNum"><%= text_field_tag :profit_form, @profit_form %></td>
   <td><%= f.label :loss_form, 'ロス高' %></td>
     <td class="formNum"><%= text_field_tag :loss_form, @loss_form %></td></tr>
+  <tr><td><%= f.label :block_no_form, 'ブロック番号' %></td>
+    <td colspan="3" class="formNum"><%= text_field_tag :block_no_form, @block_no_form %></td></tr>
   <tr><td></td><td colspan="3">
     <%= f.submit '検索する' %>
     </td></tr>

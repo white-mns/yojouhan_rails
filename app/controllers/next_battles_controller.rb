@@ -5,8 +5,8 @@ class NextBattlesController < ApplicationController
   # GET /next_battles
   def index
     param_set
-    @count	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition, :castle_structure_major_type_num]).search(params[:q]).result.count()
-    @search	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition, :castle_structure_major_type_num]).page(params[:page]).search(params[:q])
+    @count	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition, :castle_structure_major_type_num, :payoff]).search(params[:q]).result.count()
+    @search	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition, :castle_structure_major_type_num, :payoff]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @next_battles	= @search.result.per(50)
   end
@@ -22,6 +22,10 @@ class NextBattlesController < ApplicationController
     reference_number_assign(params, "block_no", "block_no_form")
     reference_number_assign(params, "status_acc_profit", "acc_profit_form")
     reference_number_assign(params, "status_rp", "rp_form")
+    reference_number_assign(params, "payoff_payoff", "payoff_form")
+    reference_number_assign(params, "payoff_attack", "attack_form")
+    reference_number_assign(params, "payoff_support", "support_form")
+    reference_number_assign(params, "payoff_defense", "defense_form")
     reference_number_assign(params, "castle_structure_major_type_num_build_num", "build_num_form")
     reference_number_assign(params, "castle_structure_major_type_num_guard_num", "guard_num_form")
     reference_number_assign(params, "castle_structure_major_type_num_goods_num", "goods_num_form")
@@ -34,6 +38,10 @@ class NextBattlesController < ApplicationController
     @e_no_form = params["e_no_form"]
     @acc_profit_form = params["acc_profit_form"]
     @rp_form = params["rp_form"]
+    @payoff_form = params["payoff_form"]
+    @attack_form = params["attack_form"]
+    @support_form = params["support_form"]
+    @defense_form = params["defense_form"]
     @build_num_form = params["build_num_form"]
     @guard_num_form = params["guard_num_form"]
     @goods_num_form = params["goods_num_form"]
