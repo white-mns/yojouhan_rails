@@ -19,37 +19,33 @@ class PayoffsController < ApplicationController
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
     reference_word_assign(params, "p_name_name", "p_name_form", "cont")
-        reference_number_assign(params, "result_no", "result_no_form")
-        reference_number_assign(params, "generate_no", "generate_no_form")
-        reference_number_assign(params, "e_no", "e_no_form")
-        reference_number_assign(params, "mob", "mob_form")
-        reference_number_assign(params, "payoff", "payoff_form")
-        reference_number_assign(params, "attack", "attack_form")
-        reference_number_assign(params, "support", "support_form")
-        reference_number_assign(params, "defense", "defense_form")
-        reference_number_assign(params, "destroy", "destroy_form")
-        reference_number_assign(params, "selling", "selling_form")
-        reference_number_assign(params, "income", "income_form")
-        reference_number_assign(params, "spending", "spending_form")
-        reference_number_assign(params, "profit", "profit_form")
-        reference_number_assign(params, "loss", "loss_form")
+    reference_number_assign(params, "mob", "mob_form")
+    reference_number_assign(params, "payoff", "payoff_form")
+    reference_number_assign(params, "attack", "attack_form")
+    reference_number_assign(params, "support", "support_form")
+    reference_number_assign(params, "defense", "defense_form")
+    reference_number_assign(params, "destroy", "destroy_form")
+    reference_number_assign(params, "selling", "selling_form")
+    reference_number_assign(params, "income", "income_form")
+    reference_number_assign(params, "spending", "spending_form")
+    reference_number_assign(params, "profit", "profit_form")
+    reference_number_assign(params, "loss", "loss_form")
         
+    @result_no_form = params["result_no_form"]
+    @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
-        @result_no_form = params["result_no_form"]
-        @generate_no_form = params["generate_no_form"]
-        @e_no_form = params["e_no_form"]
-        @mob_form = params["mob_form"]
-        @payoff_form = params["payoff_form"]
-        @attack_form = params["attack_form"]
-        @support_form = params["support_form"]
-        @defense_form = params["defense_form"]
-        @destroy_form = params["destroy_form"]
-        @selling_form = params["selling_form"]
-        @income_form = params["income_form"]
-        @spending_form = params["spending_form"]
-        @profit_form = params["profit_form"]
-        @loss_form = params["loss_form"]
-      end
+    @mob_form = params["mob_form"]
+    @payoff_form = params["payoff_form"]
+    @attack_form = params["attack_form"]
+    @support_form = params["support_form"]
+    @defense_form = params["defense_form"]
+    @destroy_form = params["destroy_form"]
+    @selling_form = params["selling_form"]
+    @income_form = params["income_form"]
+    @spending_form = params["spending_form"]
+    @profit_form = params["profit_form"]
+    @loss_form = params["loss_form"]
+  end
   # GET /payoffs/1
   #def show
   #end
@@ -97,6 +93,6 @@ class PayoffsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def payoff_params
-      params.require(:payoff).permit(:result_no, :generate_no, :e_no, :mob, :payoff, :attack, :support, :defense, :destroy, :selling, :income, :spending, :profit, :loss)
+      params.require(:payoff).permit(:result_no, :generate_no, :e_no, :mob, :payoff, :attack, :support, :defense, :defeat, :selling, :income, :spending, :profit, :loss)
     end
 end
