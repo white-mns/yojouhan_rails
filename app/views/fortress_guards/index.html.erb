@@ -4,13 +4,13 @@
   <div class="row">
     <div class="col-md-12">
         <p class="formNum">テキストフォームの隣に赤い破線がある項目は数値検索です。<br>
-        「/」区切りでOR、「100-」や「100-200」のように「-」をつけて範囲指定となります。<br>
+        「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。<br>
         OR指定と範囲指定を同時に行うことはできません。</p>
         <p><span id="example_open" class="example_select pointer" onclick="example_open(true)">入力例（クリックで開きます）<br></span>
         <span id="example_close" class="example_select pointer" style="display:none;" onclick="example_open(false)">入力例（クリックで閉じます）<br></span>
         <div id="example" style="display:none;">
             <p class="formNum">数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット<br>
-            「100-」で100以上、「-100」で100以下、「100-200」で100～200の範囲指定となります。</p>
+            「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。</p>
         </div></p>
 <%= search_form_for @search do |f| %>
 <table id="search_close" class="table table-striped table-bordered table-hover" style="display:none;" onclick="search_open(true);">
