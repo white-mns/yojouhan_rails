@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208140640) do
+ActiveRecord::Schema.define(version: 20180208144008) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -223,7 +223,7 @@ ActiveRecord::Schema.define(version: 20180208140640) do
     t.integer  "attack",      limit: 4
     t.integer  "support",     limit: 4
     t.integer  "defense",     limit: 4
-    t.integer  "destroy",     limit: 4
+    t.integer  "defeat",      limit: 4
     t.integer  "selling",     limit: 4
     t.integer  "income",      limit: 4
     t.integer  "spending",    limit: 4
@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(version: 20180208140640) do
   end
 
   add_index "payoffs", ["attack"], name: "index_payoffs_on_attack", using: :btree
+  add_index "payoffs", ["defeat"], name: "index_payoffs_on_defeat", using: :btree
   add_index "payoffs", ["defense"], name: "index_payoffs_on_defense", using: :btree
-  add_index "payoffs", ["destroy"], name: "index_payoffs_on_destroy", using: :btree
   add_index "payoffs", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
   add_index "payoffs", ["income"], name: "index_payoffs_on_income", using: :btree
   add_index "payoffs", ["loss"], name: "index_payoffs_on_loss", using: :btree
