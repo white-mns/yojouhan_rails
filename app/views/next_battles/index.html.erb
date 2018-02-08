@@ -46,6 +46,14 @@
     <td class="formNum"><%= text_field_tag :acc_profit_form, @acc_profit_form %></td>
   <td><%= f.label :rp_form, 'RP' %></td>
     <td class="formNum"><%= text_field_tag :rp_form, @rp_form %></td></tr>
+  <td><%= f.label :payoff_form, '勇者売上高' %></td>
+    <td class="formNum"><%= text_field_tag :payoff_form, @payoff_form %></td></tr>
+  <tr><td><%= f.label :attack_form, '攻撃戦果補正' %></td>
+    <td class="formNum"><%= text_field_tag :attack_form, @attack_form %></td>
+  <td><%= f.label :support_form, '支援戦果補正' %></td>
+    <td class="formNum"><%= text_field_tag :support_form, @support_form %></td></tr>
+  <tr><td><%= f.label :defense_form, '防衛戦果補正' %></td>
+    <td colspan="3" class="formNum"><%= text_field_tag :defense_form, @defense_form %></td></tr>
   <tr><td><%= f.label :build_num_form, '建築構成数' %></td>
     <td class="formNum"><%= text_field_tag :build_num_form, @build_num_form %></td>
   <td><%= f.label :guard_num_form, '護衛構成数' %></td>
@@ -77,6 +85,10 @@
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
       <th><%= sort_link(@search, :block_no, '累積粗利', default_order: :desc) %></th>
       <th><%= sort_link(@search, :block_no, 'RP', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :payoff, '売上', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :attack, '攻撃', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :support, '支援', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :defense, '防衛', default_order: :desc) %></th>
       <th><%= sort_link(@search, :castle_structure_major_type_num_build_num, '建築', default_order: :desc) %></th>
       <th><%= sort_link(@search, :castle_structure_major_type_num_guard_num, '護衛', default_order: :desc) %></th>
       <th><%= sort_link(@search, :castle_structure_major_type_num_goods_num, '商品', default_order: :desc) %></th>
@@ -93,6 +105,10 @@
         <td><%= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")" %></td>
         <td><%= next_battle.status.acc_profit %></td>
         <td><%= next_battle.status.rp %></td>
+        <td><%= next_battle.payoff.payoff %></td>
+        <td><%= next_battle.payoff.attack %></td>
+        <td><%= next_battle.payoff.support %></td>
+        <td><%= next_battle.payoff.defense %></td>
         <td><%= next_battle.castle_structure_major_type_num.build_num %></td>
         <td><%= next_battle.castle_structure_major_type_num.guard_num %></td>
         <td><%= next_battle.castle_structure_major_type_num.goods_num %></td>

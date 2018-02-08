@@ -5,8 +5,8 @@ class PayoffsController < ApplicationController
   # GET /payoffs
   def index
     param_set
-    @count	= Payoff.includes([:p_name]).search(params[:q]).result.count()
-    @search	= Payoff.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= Payoff.includes([:p_name, :next_battle]).search(params[:q]).result.count()
+    @search	= Payoff.includes([:p_name, :next_battle]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @payoffs	= @search.result.per(50)
   end
@@ -30,6 +30,7 @@ class PayoffsController < ApplicationController
     reference_number_assign(params, "spending", "spending_form")
     reference_number_assign(params, "profit", "profit_form")
     reference_number_assign(params, "loss", "loss_form")
+    reference_number_assign(params, "next_battle_block_no", "block_no_form")
         
     @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
@@ -45,6 +46,7 @@ class PayoffsController < ApplicationController
     @spending_form = params["spending_form"]
     @profit_form = params["profit_form"]
     @loss_form = params["loss_form"]
+    @block_no_form = params["block_no_form"]
   end
   # GET /payoffs/1
   #def show
