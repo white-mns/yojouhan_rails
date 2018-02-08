@@ -1,0 +1,73 @@
+<%= form_for(@payoff) do |f| %>
+  <% if @payoff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payoff.errors.count, "error") %> prohibited this payoff from being saved:</h2>
+
+      <ul>
+      <% @payoff.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result_no %><br>
+    <%= f.number_field :result_no %>
+  </div>
+  <div class="field">
+    <%= f.label :generate_no %><br>
+    <%= f.number_field :generate_no %>
+  </div>
+  <div class="field">
+    <%= f.label :e_no %><br>
+    <%= f.number_field :e_no %>
+  </div>
+  <div class="field">
+    <%= f.label :mob %><br>
+    <%= f.number_field :mob %>
+  </div>
+  <div class="field">
+    <%= f.label :payoff %><br>
+    <%= f.number_field :payoff %>
+  </div>
+  <div class="field">
+    <%= f.label :attack %><br>
+    <%= f.number_field :attack %>
+  </div>
+  <div class="field">
+    <%= f.label :support %><br>
+    <%= f.number_field :support %>
+  </div>
+  <div class="field">
+    <%= f.label :defense %><br>
+    <%= f.number_field :defense %>
+  </div>
+  <div class="field">
+    <%= f.label :destroy %><br>
+    <%= f.number_field :destroy %>
+  </div>
+  <div class="field">
+    <%= f.label :selling %><br>
+    <%= f.number_field :selling %>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.number_field :income %>
+  </div>
+  <div class="field">
+    <%= f.label :spending %><br>
+    <%= f.number_field :spending %>
+  </div>
+  <div class="field">
+    <%= f.label :profit %><br>
+    <%= f.number_field :profit %>
+  </div>
+  <div class="field">
+    <%= f.label :loss %><br>
+    <%= f.number_field :loss %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

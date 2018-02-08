@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206145618) do
+ActiveRecord::Schema.define(version: 20180208140640) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -213,6 +213,38 @@ ActiveRecord::Schema.define(version: 20180206145618) do
 
   add_index "next_battles", ["block_no"], name: "index_next_battles_on_block_no", using: :btree
   add_index "next_battles", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+
+  create_table "payoffs", force: :cascade do |t|
+    t.integer  "result_no",   limit: 4
+    t.integer  "generate_no", limit: 4
+    t.integer  "e_no",        limit: 4
+    t.integer  "mob",         limit: 4
+    t.integer  "payoff",      limit: 4
+    t.integer  "attack",      limit: 4
+    t.integer  "support",     limit: 4
+    t.integer  "defense",     limit: 4
+    t.integer  "destroy",     limit: 4
+    t.integer  "selling",     limit: 4
+    t.integer  "income",      limit: 4
+    t.integer  "spending",    limit: 4
+    t.integer  "profit",      limit: 4
+    t.integer  "loss",        limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "payoffs", ["attack"], name: "index_payoffs_on_attack", using: :btree
+  add_index "payoffs", ["defense"], name: "index_payoffs_on_defense", using: :btree
+  add_index "payoffs", ["destroy"], name: "index_payoffs_on_destroy", using: :btree
+  add_index "payoffs", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "payoffs", ["income"], name: "index_payoffs_on_income", using: :btree
+  add_index "payoffs", ["loss"], name: "index_payoffs_on_loss", using: :btree
+  add_index "payoffs", ["mob"], name: "index_payoffs_on_mob", using: :btree
+  add_index "payoffs", ["payoff"], name: "index_payoffs_on_payoff", using: :btree
+  add_index "payoffs", ["profit"], name: "index_payoffs_on_profit", using: :btree
+  add_index "payoffs", ["selling"], name: "index_payoffs_on_selling", using: :btree
+  add_index "payoffs", ["spending"], name: "index_payoffs_on_spending", using: :btree
+  add_index "payoffs", ["support"], name: "index_payoffs_on_support", using: :btree
 
   create_table "regalia_lists", force: :cascade do |t|
     t.integer  "regalia_id", limit: 4

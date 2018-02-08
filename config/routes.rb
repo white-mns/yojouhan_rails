@@ -1,4 +1,5 @@
 Loe::Application.routes.draw do
+  resources :payoffs
   resources :castle_structure_major_type_nums
   resources :frame_type_lists
   resources :castle_structures

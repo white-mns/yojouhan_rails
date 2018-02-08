@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  mob: 1
+  payoff: 1
+  attack: 1
+  support: 1
+  defense: 1
+  destroy: 1
+  selling: 1
+  income: 1
+  spending: 1
+  profit: 1
+  loss: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  mob: 1
+  payoff: 1
+  attack: 1
+  support: 1
+  defense: 1
+  destroy: 1
+  selling: 1
+  income: 1
+  spending: 1
+  profit: 1
+  loss: 1
