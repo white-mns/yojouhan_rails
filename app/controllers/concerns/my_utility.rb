@@ -66,10 +66,10 @@ module MyUtility
         end
 
         for text in texts do
-            if (text && text.match(/(\d+)-(\d+)/)) then
-                text_match = text.match(/(\d+)-(\d+)/)
-                reference_number_set(param_adr, data_name, text_match[0] + "-") 
-                reference_number_set(param_adr, data_name, "-" + text_match[2]) 
+            if (text && text.match(/([\-\.\d]+)~([\-\.\d]+)/)) then
+                text_match = text.match(/([\-\.\d]+)~([\-\.\d]+)/)
+                reference_number_set(param_adr, data_name, text_match[0] + "~") 
+                reference_number_set(param_adr, data_name, "~" + text_match[2]) 
             else
                 reference_number_set(param_adr, data_name, text) 
             end
@@ -80,14 +80,19 @@ module MyUtility
   # 数値の文字列から以上・以下を判定し、Ransackが参照する配列に割り当てる
   def reference_number_set(param_adr, data_name, text)
       match_suffix = "eq"
-      if(text[0] == "-") then
+      if(text[0] == "~") then
           text.slice!(0,1)
           match_suffix = "lteq"
       end
       
-      if(text[-1] == "-") then
+      if(text[-1] == "~") then
           text.slice!(-1,1)
           match_suffix = "gteq"
+      end
+      
+      if(text[0] == "!") then
+          # マイナス符号への置換
+          text.sub!(/!/, '-')
       end
       
       param_adr[:q][data_name + "_" + match_suffix + "_any"].push(text)

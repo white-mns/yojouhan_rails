@@ -13,6 +13,8 @@
           <li><%= link_to "アイテム一覧", items_path %></li>
           <li><%= link_to "ステータス一覧", statuses_path %></li>
           <li><%= link_to "城塞データ一覧", fortress_all_data_path %></li>
+          <li><%= link_to "お城構成データ一覧", castle_structures_path %></li>
+          <li><%= link_to "精算結果一覧", payoffs_path %></li>
           <br>
           <li><%= link_to "城塞データ(抜粋)一覧", fortress_data_path %></li>
           <li><%= link_to "属性防御一覧", fortress_guards_path %></li>
@@ -27,6 +29,12 @@
     <div class="well well-sm">
       <h2>更新履歴</h2>
       <ul>
+        <li>2018/2/9</li>
+        <ul>
+          <li><%= link_to "お城構成データ一覧", castle_structures_path %>を追加</li>
+          <li><%= link_to "精算結果一覧", payoffs_path %>を追加</li>
+          <li><%= link_to "次回の組み合わせ一覧", next_battles_path %>に建築、護衛、商品別の構成数を追加</li>
+        <ul>
         <li>2018/2/1</li>
         <ul>
           <li><%= link_to "次回の組み合わせ一覧", next_battles_path %>を追加</li>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Frame type:</strong>
+  <%= @frame_type_list.frame_type_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @frame_type_list.name %>
+</p>
+
+<%= link_to 'Edit', edit_frame_type_list_path(@frame_type_list) %> |
+<%= link_to 'Back', frame_type_lists_path %>

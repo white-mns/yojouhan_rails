@@ -1,4 +1,8 @@
 Loe::Application.routes.draw do
+  resources :payoffs
+  resources :castle_structure_major_type_nums
+  resources :frame_type_lists
+  resources :castle_structures
   resources :next_battles
   get "fortress_data/all_data",    :to => "fortress_data#all_data",     :as => 'fortress_all_data' 
 

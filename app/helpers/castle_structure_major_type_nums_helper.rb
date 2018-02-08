@@ -1,0 +1,2 @@
+module CastleStructureMajorTypeNumsHelper
+end
