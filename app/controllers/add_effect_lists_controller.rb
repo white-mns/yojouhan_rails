@@ -5,27 +5,21 @@ class AddEffectListsController < ApplicationController
   # GET /add_effect_lists
   def index
     param_set
-    @count	= AddEffectList.includes([:p_name]).search(params[:q]).result.count()
-    @search	= AddEffectList.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= AddEffectList.search(params[:q]).result.count()
+    @search	= AddEffectList.page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @add_effect_lists	= @search.result.per(50)
   end
 
   def param_set
-    last_result = Name.maximum('result_no')
-    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
-    reference_number_assign(params, "result_no", "result_no_form")
-    reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
-        reference_number_assign(params, "add_effect_id", "add_effect_id_form")
-        reference_number_assign(params, "name", "name_form")
+    reference_number_assign(params, "add_effect_id", "add_effect_id_form")
+    reference_number_assign(params, "name", "name_form")
         
-    @p_name_form = params["p_name_form"]
-        @add_effect_id_form = params["add_effect_id_form"]
-        @name_form = params["name_form"]
-      end
+    @add_effect_id_form = params["add_effect_id_form"]
+    @name_form = params["name_form"]
+  end
   # GET /add_effect_lists/1
   #def show
   #end

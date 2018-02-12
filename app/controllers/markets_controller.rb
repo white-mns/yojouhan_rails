@@ -5,8 +5,8 @@ class MarketsController < ApplicationController
   # GET /markets
   def index
     param_set
-    @count	= Market.includes([:p_name, :unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name, :guard_elemental_name]).search(params[:q]).result.count()
-    @search	= Market.includes([:p_name, :unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name, :guard_elemental_name]).page(params[:page]).search(params[:q])
+    @count	= Market.includes([:p_name, :unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name, :guard_elemental_name, :add_effect]).search(params[:q]).result.count()
+    @search	= Market.includes([:p_name, :unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name, :guard_elemental_name, :add_effect]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @markets	= @search.result.per(50)
   end
@@ -35,7 +35,7 @@ class MarketsController < ApplicationController
     reference_number_assign(params, "enthusiasm", "enthusiasm_form")
     reference_number_assign(params, "goodwill", "goodwill_form")
     reference_number_assign(params, "charge", "charge_form")
-    reference_number_assign(params, "tokushu", "tokushu_form")
+    reference_word_assign(params, "add_effect_name", "tokushu_form", "cont")
     reference_word_assign(params, "fuka1_name_name", "fuka1_form", "cont")
     reference_word_assign(params, "fuka2_name_name", "fuka2_form", "cont")
     reference_number_assign(params, "strength", "strength_form")
