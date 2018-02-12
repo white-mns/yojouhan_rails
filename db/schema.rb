@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212125042) do
+ActiveRecord::Schema.define(version: 20180212144913) do
+
+  create_table "add_effect_lists", force: :cascade do |t|
+    t.integer  "add_effect_id", limit: 4
+    t.string   "name",          limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "add_effect_lists", ["add_effect_id"], name: "index_add_effect_lists_on_add_effect_id", using: :btree
+  add_index "add_effect_lists", ["name"], name: "index_add_effect_lists_on_name", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -194,7 +204,7 @@ ActiveRecord::Schema.define(version: 20180212125042) do
     t.integer  "market_no",       limit: 4
     t.integer  "unit_type",       limit: 4
     t.integer  "orig_name",       limit: 4
-    t.integer  "name",            limit: 4
+    t.string   "name",            limit: 255
     t.integer  "value",           limit: 4
     t.integer  "attack",          limit: 4
     t.integer  "biattack",        limit: 4
@@ -212,8 +222,8 @@ ActiveRecord::Schema.define(version: 20180212125042) do
     t.integer  "fuka2",           limit: 4
     t.integer  "strength",        limit: 4
     t.integer  "e_no",            limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "markets", ["attack"], name: "index_markets_on_attack", using: :btree

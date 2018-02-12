@@ -1,4 +1,5 @@
 Loe::Application.routes.draw do
+  resources :add_effect_lists
   resources :markets
   resources :payoffs
   resources :castle_structure_major_type_nums
