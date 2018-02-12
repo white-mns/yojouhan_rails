@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208145330) do
+ActiveRecord::Schema.define(version: 20180212144913) do
+
+  create_table "add_effect_lists", force: :cascade do |t|
+    t.integer  "add_effect_id", limit: 4
+    t.string   "name",          limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "add_effect_lists", ["add_effect_id"], name: "index_add_effect_lists_on_add_effect_id", using: :btree
+  add_index "add_effect_lists", ["name"], name: "index_add_effect_lists_on_name", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -187,6 +197,56 @@ ActiveRecord::Schema.define(version: 20180208145330) do
   add_index "items", ["strength"], name: "index_items_on_strength", using: :btree
   add_index "items", ["unit_type"], name: "index_items_on_unit_type", using: :btree
   add_index "items", ["value"], name: "index_items_on_value", using: :btree
+
+  create_table "markets", force: :cascade do |t|
+    t.integer  "result_no",       limit: 4
+    t.integer  "generate_no",     limit: 4
+    t.integer  "market_no",       limit: 4
+    t.integer  "unit_type",       limit: 4
+    t.integer  "orig_name",       limit: 4
+    t.string   "name",            limit: 255
+    t.integer  "value",           limit: 4
+    t.integer  "attack",          limit: 4
+    t.integer  "biattack",        limit: 4
+    t.integer  "grand",           limit: 4
+    t.integer  "guard_elemental", limit: 4
+    t.integer  "guard_value",     limit: 4
+    t.integer  "forecast",        limit: 4
+    t.integer  "caution",         limit: 4
+    t.integer  "continuance",     limit: 4
+    t.integer  "enthusiasm",      limit: 4
+    t.integer  "goodwill",        limit: 4
+    t.integer  "charge",          limit: 4
+    t.integer  "tokushu",         limit: 4
+    t.integer  "fuka1",           limit: 4
+    t.integer  "fuka2",           limit: 4
+    t.integer  "strength",        limit: 4
+    t.integer  "e_no",            limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "markets", ["attack"], name: "index_markets_on_attack", using: :btree
+  add_index "markets", ["biattack"], name: "index_markets_on_biattack", using: :btree
+  add_index "markets", ["caution"], name: "index_markets_on_caution", using: :btree
+  add_index "markets", ["charge"], name: "index_markets_on_charge", using: :btree
+  add_index "markets", ["continuance"], name: "index_markets_on_continuance", using: :btree
+  add_index "markets", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "markets", ["enthusiasm"], name: "index_markets_on_enthusiasm", using: :btree
+  add_index "markets", ["forecast"], name: "index_markets_on_forecast", using: :btree
+  add_index "markets", ["fuka1"], name: "index_markets_on_fuka1", using: :btree
+  add_index "markets", ["fuka2"], name: "index_markets_on_fuka2", using: :btree
+  add_index "markets", ["goodwill"], name: "index_markets_on_goodwill", using: :btree
+  add_index "markets", ["grand"], name: "index_markets_on_grand", using: :btree
+  add_index "markets", ["guard_elemental"], name: "index_markets_on_guard_elemental", using: :btree
+  add_index "markets", ["guard_value"], name: "index_markets_on_guard_value", using: :btree
+  add_index "markets", ["market_no"], name: "index_markets_on_market_no", using: :btree
+  add_index "markets", ["name"], name: "index_markets_on_name", using: :btree
+  add_index "markets", ["orig_name"], name: "index_markets_on_orig_name", using: :btree
+  add_index "markets", ["strength"], name: "index_markets_on_strength", using: :btree
+  add_index "markets", ["tokushu"], name: "index_markets_on_tokushu", using: :btree
+  add_index "markets", ["unit_type"], name: "index_markets_on_unit_type", using: :btree
+  add_index "markets", ["value"], name: "index_markets_on_value", using: :btree
 
   create_table "names", force: :cascade do |t|
     t.integer  "result_no",   limit: 4

@@ -1,0 +1,109 @@
+<%= form_for(@market) do |f| %>
+  <% if @market.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@market.errors.count, "error") %> prohibited this market from being saved:</h2>
+
+      <ul>
+      <% @market.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result_no %><br>
+    <%= f.number_field :result_no %>
+  </div>
+  <div class="field">
+    <%= f.label :generate_no %><br>
+    <%= f.number_field :generate_no %>
+  </div>
+  <div class="field">
+    <%= f.label :market_no %><br>
+    <%= f.number_field :market_no %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_type %><br>
+    <%= f.number_field :unit_type %>
+  </div>
+  <div class="field">
+    <%= f.label :orig_name %><br>
+    <%= f.number_field :orig_name %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.number_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.number_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :attack %><br>
+    <%= f.number_field :attack %>
+  </div>
+  <div class="field">
+    <%= f.label :biattack %><br>
+    <%= f.number_field :biattack %>
+  </div>
+  <div class="field">
+    <%= f.label :grand %><br>
+    <%= f.number_field :grand %>
+  </div>
+  <div class="field">
+    <%= f.label :guard_elemental %><br>
+    <%= f.number_field :guard_elemental %>
+  </div>
+  <div class="field">
+    <%= f.label :guard_value %><br>
+    <%= f.number_field :guard_value %>
+  </div>
+  <div class="field">
+    <%= f.label :forecast %><br>
+    <%= f.number_field :forecast %>
+  </div>
+  <div class="field">
+    <%= f.label :caution %><br>
+    <%= f.number_field :caution %>
+  </div>
+  <div class="field">
+    <%= f.label :continuance %><br>
+    <%= f.number_field :continuance %>
+  </div>
+  <div class="field">
+    <%= f.label :enthusiasm %><br>
+    <%= f.number_field :enthusiasm %>
+  </div>
+  <div class="field">
+    <%= f.label :goodwill %><br>
+    <%= f.number_field :goodwill %>
+  </div>
+  <div class="field">
+    <%= f.label :charge %><br>
+    <%= f.number_field :charge %>
+  </div>
+  <div class="field">
+    <%= f.label :tokushu %><br>
+    <%= f.number_field :tokushu %>
+  </div>
+  <div class="field">
+    <%= f.label :fuka1 %><br>
+    <%= f.number_field :fuka1 %>
+  </div>
+  <div class="field">
+    <%= f.label :fuka2 %><br>
+    <%= f.number_field :fuka2 %>
+  </div>
+  <div class="field">
+    <%= f.label :strength %><br>
+    <%= f.number_field :strength %>
+  </div>
+  <div class="field">
+    <%= f.label :e_no %><br>
+    <%= f.number_field :e_no %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

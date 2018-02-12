@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  market_no: 1
+  unit_type: 1
+  orig_name: 1
+  name: 1
+  value: 1
+  attack: 1
+  biattack: 1
+  grand: 1
+  guard_elemental: 1
+  guard_value: 1
+  forecast: 1
+  caution: 1
+  continuance: 1
+  enthusiasm: 1
+  goodwill: 1
+  charge: 1
+  tokushu: 1
+  fuka1: 1
+  fuka2: 1
+  strength: 1
+  e_no: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  market_no: 1
+  unit_type: 1
+  orig_name: 1
+  name: 1
+  value: 1
+  attack: 1
+  biattack: 1
+  grand: 1
+  guard_elemental: 1
+  guard_value: 1
+  forecast: 1
+  caution: 1
+  continuance: 1
+  enthusiasm: 1
+  goodwill: 1
+  charge: 1
+  tokushu: 1
+  fuka1: 1
+  fuka2: 1
+  strength: 1
+  e_no: 1
