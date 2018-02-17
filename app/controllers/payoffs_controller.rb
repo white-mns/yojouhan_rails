@@ -24,7 +24,7 @@ class PayoffsController < ApplicationController
     reference_number_assign(params, "attack", "attack_form")
     reference_number_assign(params, "support", "support_form")
     reference_number_assign(params, "defense", "defense_form")
-    reference_number_assign(params, "destroy", "destroy_form")
+    reference_number_assign(params, "defeat", "defeat_form")
     reference_number_assign(params, "special", "special_form")
     reference_number_assign(params, "selling", "selling_form")
     reference_number_assign(params, "income", "income_form")
@@ -41,7 +41,7 @@ class PayoffsController < ApplicationController
     @attack_form = params["attack_form"]
     @support_form = params["support_form"]
     @defense_form = params["defense_form"]
-    @destroy_form = params["destroy_form"]
+    @defeat_form = params["defeat_form"]
     @special_form = params["special_form"]
     @selling_form = params["selling_form"]
     @income_form = params["income_form"]
