@@ -52,8 +52,10 @@
     <td colspan="3" class="formNum"><%= text_field_tag :defense_form, @defense_form %></td></tr>
   <tr><td><%= f.label :defeat_form, '撃墜数補正' %></td>
     <td class="formNum"><%= text_field_tag :defeat_form, @defeat_form %></td>
-  <td><%= f.label :selling_form, '販売数補正' %></td>
-    <td class="formNum"><%= text_field_tag :selling_form, @selling_form %></td></tr>
+  <td><%= f.label :speial_form, '特別補正' %></td>
+    <td class="formNum"><%= text_field_tag :special_form, @special_form %></td></tr>
+  <tr><td><%= f.label :selling_form, '販売数補正' %></td>
+    <td colspan="3" class="formNum"><%= text_field_tag :selling_form, @selling_form %></td></tr>
   <tr><td><%= f.label :income_form, '合計現金収入' %></td>
     <td class="formNum"><%= text_field_tag :income_form, @income_form %></td>
   <td><%= f.label :spending_form, '予算消費' %></td>
@@ -90,6 +92,7 @@
       <th><%= sort_link(@search, :support, '支援', default_order: :desc) %></th>
       <th><%= sort_link(@search, :defense, '防衛', default_order: :desc) %></th>
       <th><%= sort_link(@search, :defeat, '撃墜', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :special, '特別', default_order: :desc) %></th>
       <th><%= sort_link(@search, :selling, '販売数', default_order: :desc) %></th>
       <th><%= sort_link(@search, :income, '収入', default_order: :desc) %></th>
       <th><%= sort_link(@search, :spending, '予算消費', default_order: :desc) %></th>
@@ -110,6 +113,7 @@
         <td><%= payoff.support %></td>
         <td><%= payoff.defense %></td>
         <td><%= payoff.defeat %></td>
+        <td><%= payoff.special %></td>
         <td><%= payoff.selling %></td>
         <td><%= payoff.income %></td>
         <td><%= payoff.spending %></td>

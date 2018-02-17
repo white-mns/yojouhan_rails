@@ -25,6 +25,7 @@ class PayoffsController < ApplicationController
     reference_number_assign(params, "support", "support_form")
     reference_number_assign(params, "defense", "defense_form")
     reference_number_assign(params, "destroy", "destroy_form")
+    reference_number_assign(params, "special", "special_form")
     reference_number_assign(params, "selling", "selling_form")
     reference_number_assign(params, "income", "income_form")
     reference_number_assign(params, "spending", "spending_form")
@@ -41,6 +42,7 @@ class PayoffsController < ApplicationController
     @support_form = params["support_form"]
     @defense_form = params["defense_form"]
     @destroy_form = params["destroy_form"]
+    @special_form = params["special_form"]
     @selling_form = params["selling_form"]
     @income_form = params["income_form"]
     @spending_form = params["spending_form"]
@@ -95,6 +97,6 @@ class PayoffsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def payoff_params
-      params.require(:payoff).permit(:result_no, :generate_no, :e_no, :mob, :payoff, :attack, :support, :defense, :defeat, :selling, :income, :spending, :profit, :loss)
+      params.require(:payoff).permit(:result_no, :generate_no, :e_no, :mob, :payoff, :attack, :support, :defense, :defeat, :special, :selling, :income, :spending, :profit, :loss)
     end
 end
