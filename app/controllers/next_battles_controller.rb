@@ -5,8 +5,8 @@ class NextBattlesController < ApplicationController
   # GET /next_battles
   def index
     param_set
-    @count	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition, :castle_structure_major_type_num, :payoff]).search(params[:q]).result.count()
-    @search	= NextBattle.includes([:p_name, :status, :fortress_data, :castle_condition, :castle_structure_major_type_num, :payoff]).page(params[:page]).search(params[:q])
+    @count	= NextBattle.includes([:p_name, :status, :castle_condition, :castle_structure_major_type_num, :payoff, fortress_data: :regalia_name]).search(params[:q]).result.count()
+    @search	= NextBattle.includes([:p_name, :status, :castle_condition, :castle_structure_major_type_num, :payoff, fortress_data: :regalia_name]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @next_battles	= @search.result.per(50)
   end
