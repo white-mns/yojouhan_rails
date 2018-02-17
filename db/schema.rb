@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212144913) do
+ActiveRecord::Schema.define(version: 20180217135110) do
 
   create_table "add_effect_lists", force: :cascade do |t|
     t.integer  "add_effect_id", limit: 4
@@ -291,6 +291,7 @@ ActiveRecord::Schema.define(version: 20180212144913) do
     t.integer  "loss",        limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.float    "special",     limit: 24
   end
 
   add_index "payoffs", ["attack"], name: "index_payoffs_on_attack", using: :btree
