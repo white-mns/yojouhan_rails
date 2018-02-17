@@ -6,24 +6,21 @@ Loe::Application.routes.draw do
   resources :frame_type_lists
   resources :castle_structures
   resources :next_battles
-  get "fortress_data/all_data",    :to => "fortress_data#all_data",     :as => 'fortress_all_data' 
-
   resources :castle_condition_texts
   resources :castle_condition_lists
   resources :fortress_guards
   resources :regalia_lists
+  
+  get "fortress_data/all_data",    :to => "fortress_data#all_data",     :as => 'fortress_all_data' 
+  get "fortress_data/and_payoffs",    :to => "fortress_data#and_payoffs",     :as => 'fortress_data_and_payoffs' 
   resources :fortress_data
+
   resources :statuses
   resources :items
-
   resources :names
-
   resources :elemental_lists
-
   resources :fuka_lists
-
   resources :unit_orig_name_lists
-
   resources :unit_type_lists
 
   get "top_page/index" 
