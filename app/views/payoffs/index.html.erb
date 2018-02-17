@@ -95,9 +95,9 @@
       <th><%= sort_link(@search, :special, '特別', default_order: :desc) %></th>
       <th><%= sort_link(@search, :selling, '販売数', default_order: :desc) %></th>
       <th><%= sort_link(@search, :income, '収入', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :spending, '予算消費', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :spending, '予算消費', default_order: :asc) %></th>
       <th><%= sort_link(@search, :profit, '粗利', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :loss, 'ロス高', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :loss, 'ロス高', default_order: :asc) %></th>
       <th>結果リンク</th>
     </tr>
   </thead>
