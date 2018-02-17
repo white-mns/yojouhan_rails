@@ -12,7 +12,7 @@ class FrameTypeListsController < ApplicationController
   end
 
   def param_set
-    last_result = Name.maximum('result_no')
+    @last_result = Name.maximum('result_no')
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "frame_type_id", "frame_type_id_form")
