@@ -52,6 +52,12 @@
     <td class="formNum"><%= text_field_tag :i_no_form, @i_no_form %></td>
   <td><%= f.label :name_form, 'アイテム名' %></td>
     <td class="formText"><%= text_field_tag :name_form, @name_form %></td>
+  <tr><td><%= f.label :fuka1_form, '付加1' %></td>
+    <td class="formText"><%= text_field_tag :fuka1_form, @fuka1_form %></td>
+  <td><%= f.label :fuka2_form, '付加2' %></td>
+    <td class="formText"><%= text_field_tag :fuka2_form, @fuka2_form %></td></tr>
+  <tr><td><%= f.label :stock_form, '在庫' %></td>
+    <td colspan="3" class="formNum"><%= text_field_tag :stock_form, @stock_form %></td></tr>
   <tr><td></td><td colspan="3">
     <%= f.submit '検索する' %>
     </td></tr>
@@ -77,6 +83,9 @@
       <th><%= sort_link(@search, :item_unit_type, '種別', default_order: :desc) %></th>
       <th><%= sort_link(@search, :item_orig_name, '元の名前', default_order: :desc) %></th>
       <th><%= sort_link(@search, :item_orig_name, 'アイテム名', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :item_fuka1, '付加1', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :item_fuka2, '付加2', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :item_stock, '在庫', default_order: :desc) %></th>
       <th>結果リンク</th>
     </tr>
   </thead>
@@ -96,6 +105,9 @@
         <td><%= castle_structure.item.unit_type_name.name if castle_structure.i_no > 0 %></td>
         <td><%= castle_structure.item.unit_orig_name.name if castle_structure.i_no > 0 %></td>
         <td><%= castle_structure.item.name if castle_structure.i_no > 0 %></td>
+        <td><%= castle_structure.item.fuka1_name.name if castle_structure.i_no > 0  %></td>
+        <td><%= castle_structure.item.fuka2_name.name if castle_structure.i_no > 0  %></td>
+        <td><%= castle_structure.item.stock if castle_structure.i_no > 0  %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",castle_structure.e_no)+".html", :target => "_blank" %></td>
       </tr>
     <% end %>
