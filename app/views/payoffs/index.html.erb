@@ -98,7 +98,7 @@
       <th><%= sort_link(@search, :spending, '予算消費', default_order: :asc) %></th>
       <th><%= sort_link(@search, :profit, '粗利', default_order: :desc) %></th>
       <th><%= sort_link(@search, :loss, 'ロス高', default_order: :asc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -120,6 +120,10 @@
         <td><%= payoff.profit %></td>
         <td><%= payoff.loss %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",payoff.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  payoff.result_no < @last_result then
+                    generate_text = payoff.generate_no > 0 ? "_"+sprintf("%d",payoff.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", payoff.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",payoff.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>

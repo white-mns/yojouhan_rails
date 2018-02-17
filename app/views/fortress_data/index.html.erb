@@ -93,7 +93,7 @@
       <th><%= sort_link(@search, :mob, 'モブ', default_order: :desc) %></th>
       <th><%= sort_link(@search, :drink, '送品酔い', default_order: :desc) %></th>
       <th><%= sort_link(@search, :regalia, 'レガリア', default_order: :desc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -114,6 +114,10 @@
         <td><%= fortress_data.drink %></td>
         <td><%= fortress_data.regalia_name.name %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",fortress_data.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  fortress_data.result_no < @last_result then
+                    generate_text = fortress_data.generate_no > 0 ? "_"+sprintf("%d",fortress_data.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", fortress_data.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",fortress_data.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>
