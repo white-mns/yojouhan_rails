@@ -12,8 +12,8 @@ class FortressGuardsController < ApplicationController
   end
 
   def param_set
-    last_result = Name.maximum('result_no')
-    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
+    @last_result = Name.maximum('result_no')
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")

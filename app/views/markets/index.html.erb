@@ -118,7 +118,7 @@
       <th><%= sort_link(@search, :fuka2, '付加2', default_order: :desc) %></th>
       <th><%= sort_link(@search, :strength, '強度', default_order: :desc) %></th>
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -148,6 +148,10 @@
         <td><%= market.strength %></td>
         <td><%= market.p_name.name.html_safe + "(" + sprintf("%d",market.e_no) + ")" %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",market.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  market.result_no < @last_result then
+                    generate_text = market.generate_no > 0 ? "_"+sprintf("%d",market.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", market.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",market.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>

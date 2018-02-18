@@ -63,7 +63,7 @@
       <th><%= sort_link(@search, :result_no,'更新回', default_order: :desc) %></th>
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
       <th><%= sort_link(@search, :condition_text, '城状況', default_order: :desc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -74,6 +74,10 @@
         <td><%= castle_condition_text.p_name.name.html_safe + "(" + sprintf("%d",castle_condition_text.e_no) + ")" %></td>
         <td><%= castle_condition_text.condition_text %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",castle_condition_text.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  castle_condition_text.result_no < @last_result then
+                    generate_text = castle_condition_text.generate_no > 0 ? "_"+sprintf("%d",castle_condition_text.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", castle_condition_text.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",castle_condition_text.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>

@@ -93,7 +93,7 @@
       <th><%= sort_link(@search, :perseverance, '忍耐', default_order: :desc) %></th>
       <th><%= sort_link(@search, :funds, '資金', default_order: :desc) %></th>
       <th><%= sort_link(@search, :exp, '経験値', default_order: :desc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -114,6 +114,10 @@
         <td><%= status.funds %></td>
         <td><%= status.exp %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",status.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  status.result_no < @last_result then
+                    generate_text = status.generate_no > 0 ? "_"+sprintf("%d",status.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", status.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",status.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>

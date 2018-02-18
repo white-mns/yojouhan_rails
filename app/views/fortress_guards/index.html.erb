@@ -65,7 +65,7 @@
       <th style="border-bottom: 0.2em solid #4cc;"><%= sort_link(@search, :cold, '冷気', default_order: :desc) %></th>
       <th style="border-bottom: 0.2em solid #c44;"><%= sort_link(@search, :flame, '火炎', default_order: :desc) %></th>
       <th style="border-bottom: 0.2em solid #4c4;"><%= sort_link(@search, :saint_devil, '聖魔', default_order: :desc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -80,6 +80,10 @@
         <td><%= fortress_guard.flame %></td>
         <td><%= fortress_guard.saint_devil %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",fortress_guard.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  fortress_guard.result_no < @last_result then
+                    generate_text = fortress_guard.generate_no > 0 ? "_"+sprintf("%d",fortress_guard.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", fortress_guard.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",fortress_guard.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>

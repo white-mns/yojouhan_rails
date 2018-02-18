@@ -5,15 +5,15 @@ class CastleStructuresController < ApplicationController
   # GET /castle_structures
   def index
     param_set
-    @count	= CastleStructure.includes([:p_name, :item, :frame_type_name]).search(params[:q]).result.count()
-    @search	= CastleStructure.includes([:p_name, :item, :frame_type_name]).page(params[:page]).search(params[:q])
+    @count	= CastleStructure.includes(:p_name, :frame_type_name, item: [:unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name]).search(params[:q]).result.count()
+    @search	= CastleStructure.includes(:p_name, :frame_type_name, item: [:unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @castle_structures	= @search.result.per(50)
   end
 
   def param_set
-    last_result = Name.maximum('result_no')
-    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',last_result)
+    @last_result = Name.maximum('result_no')
+    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "result_no", "result_no_form")

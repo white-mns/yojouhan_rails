@@ -93,7 +93,7 @@
       <th><%= sort_link(@search, :castle_structure_major_type_num_guard_num, '護衛', default_order: :desc) %></th>
       <th><%= sort_link(@search, :castle_structure_major_type_num_goods_num, '商品', default_order: :desc) %></th>
       <th><%= sort_link(@search, :block_no, 'レガリア', default_order: :desc) %></th>
-      <th>結果リンク</th>
+      <th colspan="2">結果リンク</th>
     </tr>
   </thead>
 
@@ -114,6 +114,10 @@
         <td><%= next_battle.castle_structure_major_type_num.goods_num %></td>
         <td><%= next_battle.fortress_data.regalia_name.name %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",next_battle.e_no)+".html", :target => "_blank" %></td>
+        <td><%= if  next_battle.result_no < @last_result then
+                    generate_text = next_battle.generate_no > 0 ? "_"+sprintf("%d",next_battle.generate_no) : "";
+                    link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", next_battle.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",next_battle.e_no)+".html", :target => "_blank"
+                end %></td>
       </tr>
     <% end %>
   </tbody>
