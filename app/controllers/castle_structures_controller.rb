@@ -18,14 +18,14 @@ class CastleStructuresController < ApplicationController
     
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
-    reference_word_assign(params, "frame_type_name_name", "frame_type_form", "cont")
+    reference_text_assign(params, "p_name_name", "p_name_form")
+    reference_text_assign(params, "frame_type_name_name", "frame_type_form")
     reference_number_assign(params, "i_no", "i_no_form")
-    reference_word_assign(params, "item_unit_type_name_name", "unit_type_form", "cont")
-    reference_word_assign(params, "item_unit_orig_name_name", "orig_name_form", "cont")
-    reference_word_assign(params, "item_name", "name_form", "cont")
-    reference_word_assign(params, "item_fuka1_name_name", "fuka1_form", "cont")
-    reference_word_assign(params, "item_fuka2_name_name", "fuka2_form", "cont")
+    reference_text_assign(params, "item_unit_type_name_name", "unit_type_form")
+    reference_text_assign(params, "item_unit_orig_name_name", "orig_name_form")
+    reference_text_assign(params, "item_name", "name_form")
+    reference_text_assign(params, "item_fuka1_name_name", "fuka1_form")
+    reference_text_assign(params, "item_fuka2_name_name", "fuka2_form")
     reference_number_assign(params, "item_stock", "stock_form")
         
     @result_no_form = params["result_no_form"]

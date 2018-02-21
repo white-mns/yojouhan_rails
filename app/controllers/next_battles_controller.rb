@@ -18,7 +18,7 @@ class NextBattlesController < ApplicationController
     
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
+    reference_text_assign(params, "p_name_name", "p_name_form")
     reference_number_assign(params, "block_no", "block_no_form")
     reference_number_assign(params, "status_acc_profit", "acc_profit_form")
     reference_number_assign(params, "status_rp", "rp_form")
@@ -29,7 +29,7 @@ class NextBattlesController < ApplicationController
     reference_number_assign(params, "castle_structure_major_type_num_build_num", "build_num_form")
     reference_number_assign(params, "castle_structure_major_type_num_guard_num", "guard_num_form")
     reference_number_assign(params, "castle_structure_major_type_num_goods_num", "goods_num_form")
-    reference_word_assign(params, "fortress_data_regalia_name_name", "regalia_form", "cont")
+    reference_text_assign(params, "fortress_data_regalia_name_name", "regalia_form")
         
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]

@@ -15,7 +15,7 @@ class FukaListsController < ApplicationController
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "fuka_id", "fuka_id_form")
-    reference_word_assign(params, "name", "name_form", "cont")
+    reference_text_assign(params, "name", "name_form")
     
     @fuka_id_form = params["fuka_id_form"]
     @name_form = params["name_form"]

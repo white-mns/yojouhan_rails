@@ -18,7 +18,7 @@ class PayoffsController < ApplicationController
     
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
+    reference_text_assign(params, "p_name_name", "p_name_form")
     reference_number_assign(params, "mob", "mob_form")
     reference_number_assign(params, "payoff", "payoff_form")
     reference_number_assign(params, "attack", "attack_form")

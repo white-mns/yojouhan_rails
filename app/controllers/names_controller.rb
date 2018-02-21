@@ -18,8 +18,8 @@ class NamesController < ApplicationController
     
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "name", "name_form", "cont")
-    reference_word_assign(params, "nickname", "nickname_form", "cont")
+    reference_text_assign(params, "name", "name_form")
+    reference_text_assign(params, "nickname", "nickname_form")
     
     @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]
