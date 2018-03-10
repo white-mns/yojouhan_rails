@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310101339) do
+ActiveRecord::Schema.define(version: 20180310102821) do
 
   create_table "add_effect_lists", force: :cascade do |t|
     t.integer  "add_effect_id", limit: 4
@@ -257,6 +257,22 @@ ActiveRecord::Schema.define(version: 20180310101339) do
 
   add_index "megane_type_lists", ["megane_type_id"], name: "index_megane_type_lists_on_megane_type_id", using: :btree
   add_index "megane_type_lists", ["name"], name: "index_megane_type_lists_on_name", using: :btree
+
+  create_table "meganes", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.integer  "page_type",      limit: 4
+    t.integer  "page_no",        limit: 4
+    t.integer  "megane_type_id", limit: 4
+    t.integer  "megane_count",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "meganes", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "meganes", ["megane_count"], name: "index_meganes_on_megane_count", using: :btree
+  add_index "meganes", ["megane_type_id"], name: "index_meganes_on_megane_type_id", using: :btree
 
   create_table "names", force: :cascade do |t|
     t.integer  "result_no",   limit: 4
