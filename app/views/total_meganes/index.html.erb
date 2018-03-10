@@ -78,7 +78,7 @@
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
       <th><%= sort_link(@search, :megane_type_id, '眼鏡の扱い方', default_order: :desc) %></th>
       <th><%= sort_link(@search, :megane_count, '回数', default_order: :desc) %></th>
-      <th colspan="2">結果リンク</th>
+      <th>詳細</th>
     </tr>
   </thead>
 
@@ -89,11 +89,9 @@
         <td><%= total_megane.p_name.name.html_safe + "(" + sprintf("%d",total_megane.e_no) + ")" %></td>
         <td><%= total_megane.megane_type_name.name %></td>
         <td><%= total_megane.megane_count %></td>
-    	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",total_megane.e_no)+".html", :target => "_blank" %></td>
-        <td><%= if total_megane.result_no < @last_result then
-                     generate_text = total_megane.generate_no > 0 ? "_"+sprintf("%d",total_megane.generate_no) : "";
-                     link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", total_megane.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",total_megane.e_no)+".html", :target => "_blank"
-                end %></td>
+        <td><%= result_num = sprintf("%d", total_megane.result_no)
+                link_to " 詳細", meganes_path + "?result_no_form=" + result_num + 
+                "&e_no_form=" + sprintf("%d", total_megane.e_no) %></td>
       </tr>
     <% end %>
   </tbody>
