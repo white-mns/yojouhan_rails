@@ -5,9 +5,9 @@ class AccMeganesController < ApplicationController
   # GET /acc_meganes
   def index
     param_set
-    @count	= AccMegane.includes([:p_name]).search(params[:q]).result.count()
-    @search	= AccMegane.includes([:p_name]).page(params[:page]).search(params[:q])
-    @search.sorts = 'id asc' if @search.sorts.empty?
+    @count	= AccMegane.includes([:p_name, :megane_type_name]).search(params[:q]).result.count()
+    @search	= AccMegane.includes([:p_name, :megane_type_name]).page(params[:page]).search(params[:q])
+    @search.sorts = 'megane_count desc' if @search.sorts.empty?
     @acc_meganes	= @search.result.per(50)
   end
 
@@ -16,20 +16,18 @@ class AccMeganesController < ApplicationController
     params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
+    reference_number_assign(params, "result_no", "result_no_form")
+    reference_number_assign(params, "e_no", "e_no_form")
     reference_text_assign(params, "p_name_name", "p_name_form")
-        reference_number_assign(params, "result_no", "result_no_form")
-        reference_number_assign(params, "generate_no", "generate_no_form")
-        reference_number_assign(params, "e_no", "e_no_form")
-        reference_number_assign(params, "megane_type_id", "megane_type_id_form")
-        reference_number_assign(params, "megane_count", "megane_count_form")
+    reference_text_assign(params, "megane_type_name_name", "megane_type_id_form")
+    reference_number_assign(params, "megane_count", "megane_count_form")
         
+    @result_no_form = params["result_no_form"]
+    @e_no_form = params["e_no_form"]
     @p_name_form = params["p_name_form"]
-        @result_no_form = params["result_no_form"]
-        @generate_no_form = params["generate_no_form"]
-        @e_no_form = params["e_no_form"]
-        @megane_type_id_form = params["megane_type_id_form"]
-        @megane_count_form = params["megane_count_form"]
-      end
+    @megane_type_id_form = params["megane_type_id_form"]
+    @megane_count_form = params["megane_count_form"]
+  end
   # GET /acc_meganes/1
   #def show
   #end
