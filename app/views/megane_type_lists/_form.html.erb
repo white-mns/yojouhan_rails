@@ -1,0 +1,25 @@
+<%= form_for(@megane_type_list) do |f| %>
+  <% if @megane_type_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@megane_type_list.errors.count, "error") %> prohibited this megane_type_list from being saved:</h2>
+
+      <ul>
+      <% @megane_type_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :megane_type_id %><br>
+    <%= f.number_field :megane_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

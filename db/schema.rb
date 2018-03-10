@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217135110) do
+ActiveRecord::Schema.define(version: 20180310101339) do
 
   create_table "add_effect_lists", force: :cascade do |t|
     t.integer  "add_effect_id", limit: 4
@@ -247,6 +247,16 @@ ActiveRecord::Schema.define(version: 20180217135110) do
   add_index "markets", ["tokushu"], name: "index_markets_on_tokushu", using: :btree
   add_index "markets", ["unit_type"], name: "index_markets_on_unit_type", using: :btree
   add_index "markets", ["value"], name: "index_markets_on_value", using: :btree
+
+  create_table "megane_type_lists", force: :cascade do |t|
+    t.integer  "megane_type_id", limit: 4
+    t.string   "name",           limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "megane_type_lists", ["megane_type_id"], name: "index_megane_type_lists_on_megane_type_id", using: :btree
+  add_index "megane_type_lists", ["name"], name: "index_megane_type_lists_on_name", using: :btree
 
   create_table "names", force: :cascade do |t|
     t.integer  "result_no",   limit: 4
