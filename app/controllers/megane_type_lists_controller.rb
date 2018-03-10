@@ -5,25 +5,21 @@ class MeganeTypeListsController < ApplicationController
   # GET /megane_type_lists
   def index
     param_set
-    @count	= MeganeTypeList.includes([:p_name]).search(params[:q]).result.count()
-    @search	= MeganeTypeList.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= MeganeTypeList.search(params[:q]).result.count()
+    @search	= MeganeTypeList.page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @megane_type_lists	= @search.result.per(50)
   end
 
   def param_set
-    @last_result = Name.maximum('result_no')
-    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
-    reference_text_assign(params, "p_name_name", "p_name_form")
-        reference_number_assign(params, "megane_type_id", "megane_type_id_form")
-        reference_number_assign(params, "name", "name_form")
+    reference_number_assign(params, "megane_type_id", "megane_type_id_form")
+    reference_text_assign(params, "name", "name_form")
         
-    @p_name_form = params["p_name_form"]
-        @megane_type_id_form = params["megane_type_id_form"]
-        @name_form = params["name_form"]
-      end
+    @megane_type_id_form = params["megane_type_id_form"]
+    @name_form = params["name_form"]
+  end
   # GET /megane_type_lists/1
   #def show
   #end
