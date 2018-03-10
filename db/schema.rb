@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310162258) do
+ActiveRecord::Schema.define(version: 20180310171637) do
 
   create_table "acc_meganes", force: :cascade do |t|
     t.integer  "result_no",      limit: 4
@@ -296,9 +296,11 @@ ActiveRecord::Schema.define(version: 20180310162258) do
     t.integer  "multiple_buying", limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "buy_num",         limit: 4
   end
 
   add_index "multiple_buyings", ["battle_no"], name: "index_multiple_buyings_on_battle_no", using: :btree
+  add_index "multiple_buyings", ["buy_num"], name: "index_multiple_buyings_on_buy_num", using: :btree
   add_index "multiple_buyings", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
   add_index "multiple_buyings", ["multiple_buying"], name: "index_multiple_buyings_on_multiple_buying", using: :btree
 
