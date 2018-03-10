@@ -1,0 +1,2 @@
+module TotalMeganesHelper
+end

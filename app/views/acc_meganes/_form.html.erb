@@ -1,0 +1,37 @@
+<%= form_for(@acc_megane) do |f| %>
+  <% if @acc_megane.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@acc_megane.errors.count, "error") %> prohibited this acc_megane from being saved:</h2>
+
+      <ul>
+      <% @acc_megane.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result_no %><br>
+    <%= f.number_field :result_no %>
+  </div>
+  <div class="field">
+    <%= f.label :generate_no %><br>
+    <%= f.number_field :generate_no %>
+  </div>
+  <div class="field">
+    <%= f.label :e_no %><br>
+    <%= f.number_field :e_no %>
+  </div>
+  <div class="field">
+    <%= f.label :megane_type_id %><br>
+    <%= f.number_field :megane_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :megane_count %><br>
+    <%= f.number_field :megane_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

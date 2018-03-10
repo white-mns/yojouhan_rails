@@ -1,4 +1,6 @@
 Loe::Application.routes.draw do
+  resources :acc_meganes
+  resources :total_meganes
   resources :meganes
   resources :megane_type_lists
   resources :megane_type_lists
