@@ -86,7 +86,11 @@
     <% @total_meganes.each do |total_megane| %>
       <tr>
         <td><%= total_megane.result_no %></td>
-        <td><%= total_megane.p_name.name.html_safe + "(" + sprintf("%d",total_megane.e_no) + ")" %></td>
+        <td><%= if total_megane.e_no < 10000 then
+                    total_megane.p_name.name.html_safe + "(" + sprintf("%d",total_megane.e_no) + ")"
+                else
+                    total_megane.p_name.name.html_safe
+                end %></td>
         <td><%= total_megane.megane_type_name.name %></td>
         <td><%= total_megane.megane_count %></td>
         <td><%= result_num = sprintf("%d", total_megane.result_no)
