@@ -5,8 +5,11 @@ class MultipleBuyingsController < ApplicationController
   # GET /multiple_buyings
   def index
     param_set
-    @count	= MultipleBuying.includes([:p_name]).search(params[:q]).result.count()
-    @search	= MultipleBuying.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= MultipleBuying.includes([:p_name, :fortress_data]).group([:result_no, :e_no]).search(params[:q]).result.count().keys().size()
+    @search	= MultipleBuying.includes([:p_name, :fortress_data]).group([:result_no, :e_no])
+        .select("*, max(multiple_buyings.multiple_buying) AS max, min(multiple_buyings.multiple_buying) AS min")
+        .page(params[:page]).search(params[:q])
+
     @search.sorts = 'id asc' if @search.sorts.empty?
     @multiple_buyings	= @search.result.per(50)
   end
@@ -16,20 +19,20 @@ class MultipleBuyingsController < ApplicationController
     params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
+    reference_number_assign(params, "result_no", "result_no_form")
+    reference_number_assign(params, "e_no", "e_no_form")
     reference_text_assign(params, "p_name_name", "p_name_form")
-        reference_number_assign(params, "result_no", "result_no_form")
-        reference_number_assign(params, "generate_no", "generate_no_form")
-        reference_number_assign(params, "e_no", "e_no_form")
-        reference_number_assign(params, "battle_no", "battle_no_form")
-        reference_number_assign(params, "multiple_buying", "multiple_buying_form")
+    reference_number_assign(params, "battle_no", "battle_no_form")
+    reference_number_assign(params, "multiple_buying", "multiple_buying_form")
+    reference_number_assign(params, "fortress_data_grand", "grand_form")
         
+    @result_no_form = params["result_no_form"]
     @p_name_form = params["p_name_form"]
-        @result_no_form = params["result_no_form"]
-        @generate_no_form = params["generate_no_form"]
-        @e_no_form = params["e_no_form"]
-        @battle_no_form = params["battle_no_form"]
-        @multiple_buying_form = params["multiple_buying_form"]
-      end
+    @e_no_form = params["e_no_form"]
+    @battle_no_form = params["battle_no_form"]
+    @multiple_buying_form = params["multiple_buying_form"]
+    @grand_form = params["grand_form"]
+  end
   # GET /multiple_buyings/1
   #def show
   #end

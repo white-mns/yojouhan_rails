@@ -40,16 +40,12 @@
     <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td></tr>
   <tr><td><%= f.label :p_name_form, 'キャラクター名' %></td>
     <td class="formText"><%= text_field_tag :p_name_form, @p_name_form %></td></tr>
-  <tr><td><%= f.label :result_no_form, 'Result no' %></td>
-    <td class="formNum"><%= text_field_tag :result_no_form, @result_no_form %></td></tr>
-  <tr><td><%= f.label :generate_no_form, 'Generate no' %></td>
-    <td class="formNum"><%= text_field_tag :generate_no_form, @generate_no_form %></td></tr>
-  <tr><td><%= f.label :e_no_form, 'E no' %></td>
-    <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td></tr>
-  <tr><td><%= f.label :battle_no_form, 'Battle no' %></td>
+  <tr><td><%= f.label :battle_no_form, 'ブロック番号' %></td>
     <td class="formNum"><%= text_field_tag :battle_no_form, @battle_no_form %></td></tr>
-  <tr><td><%= f.label :multiple_buying_form, 'Multiple buying' %></td>
+  <tr><td><%= f.label :multiple_buying_form, '多重購入' %></td>
     <td class="formNum"><%= text_field_tag :multiple_buying_form, @multiple_buying_form %></td></tr>
+  <tr><td><%= f.label :multiple_buying_form, '壮大' %></td>
+    <td class="formNum"><%= text_field_tag :grand_form, @grand_form %></td></tr>
   <tr><td></td><td>
     <%= f.submit '検索する' %>
     </td></tr>
@@ -70,12 +66,10 @@
     <tr>
       <th><%= sort_link(@search, :result_no,'更新回', default_order: :desc) %></th>
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :result_no, 'Result no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :generate_no, 'Generate no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :e_no, 'E no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :battle_no, 'Battle no', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :multiple_buying, 'Multiple buying', default_order: :desc) %></th>
-      <th colspan="2">結果リンク</th>
+      <th><%= sort_link(@search, :battle_no, 'ブロック', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :multiple_buying, '多重購入', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :fortress_data_grand, '壮大', default_order: :desc) %></th>
+      <th colspan="4">結果リンク</th>
     </tr>
   </thead>
 
@@ -84,15 +78,22 @@
       <tr>
         <td><%= multiple_buying.result_no %></td>
         <td><%= multiple_buying.p_name.name.html_safe + "(" + sprintf("%d",multiple_buying.e_no) + ")" %></td>
-        <td><%= multiple_buying.result_no %></td>
-        <td><%= multiple_buying.generate_no %></td>
-        <td><%= multiple_buying.e_no %></td>
         <td><%= multiple_buying.battle_no %></td>
-        <td><%= multiple_buying.multiple_buying %></td>
+        <td><%= if multiple_buying.max != multiple_buying.min then
+                    sprintf("%d", multiple_buying.min) + "～" + sprintf("%d", multiple_buying.max)
+                else
+                   multiple_buying.max
+                end %></td>
+        <td><%= multiple_buying.fortress_data.grand %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",multiple_buying.e_no)+".html", :target => "_blank" %></td>
+    	<td><%= link_to " 戦闘", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/battle"+sprintf("%d",multiple_buying.battle_no)+".html", :target => "_blank" %></td>
         <td><%= if multiple_buying.result_no < @last_result then
                      generate_text = multiple_buying.generate_no > 0 ? "_"+sprintf("%d",multiple_buying.generate_no) : "";
                      link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", multiple_buying.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",multiple_buying.e_no)+".html", :target => "_blank"
+                end %></td>
+        <td><%= if multiple_buying.result_no < @last_result then
+                     generate_text = multiple_buying.generate_no > 0 ? "_"+sprintf("%d",multiple_buying.generate_no) : "";
+                     link_to " 過去戦闘", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", multiple_buying.result_no)+generate_text+"/RESULT/battle"+sprintf("%d",multiple_buying.battle_no)+".html", :target => "_blank"
                 end %></td>
       </tr>
     <% end %>
