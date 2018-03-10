@@ -87,7 +87,11 @@
     <% @acc_meganes.each do |acc_megane| %>
       <tr>
         <td><%= acc_megane.result_no %></td>
-        <td><%= acc_megane.p_name.name.html_safe + "(" + sprintf("%d",acc_megane.e_no) + ")" %></td>
+        <td><%= if acc_megane.e_no < 10000 then
+                    acc_megane.p_name.name.html_safe + "(" + sprintf("%d",acc_megane.e_no) + ")"
+                else
+                    acc_megane.p_name.name.html_safe
+                end %></td>
         <td><%= acc_megane.megane_type_name.name %></td>
         <td><%= acc_megane.megane_count %></td>
         <td><%= result_num = sprintf("%d", acc_megane.result_no)
