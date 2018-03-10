@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  page_type: 1
+  page_no: 1
+  megane_type_id: 1
+  megane_count: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  page_type: 1
+  page_no: 1
+  megane_type_id: 1
+  megane_count: 1

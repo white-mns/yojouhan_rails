@@ -26,11 +26,22 @@
           <li><%= link_to "次回の組み合わせ一覧", next_battles_path %></li>
           <li><%= link_to "マーケット一覧", markets_path %></li>
         </ul>
+        <li><%= link_to "眼鏡ｸｲｯ", acc_meganes_path %></li>
       </ul>
     </div>
     <div class="well well-sm">
       <h2>更新履歴</h2>
       <ul>
+        <li>2018/3/10</li>
+        <ul>
+          <li><%= link_to "累計眼鏡ｸｲｯ回数ランキング", acc_meganes_path %>を公開</li>
+          <li><%= link_to "眼鏡ｸｲｯ回数一覧(更新回別)", total_meganes_path %>を公開</li>
+          <li><%= link_to "眼鏡ｸｲｯ回数一覧(ページ別)", meganes_path %>を公開</li>
+        </ul>
+        <li>2018/2/17</li>
+        <ul>
+          <li>属性防御値の検索フォームの枠の目印が文字検索になっていたのを数値検索に修正</li>
+        </ul>
         <li>2018/2/17</li>
         <ul>
           <li><%= link_to "お城構成データ一覧", castle_structures_path %>に付加、在庫を表示</li>
@@ -38,19 +49,19 @@
         </ul>
         <li>2018/2/13</li>
         <ul>
-          <li><%= link_to "マーケット一覧", markets_path %>を追加</li>
+          <li><%= link_to "マーケット一覧", markets_path %>を公開</li>
         </ul>
         <li>2018/2/9</li>
         <ul>
-          <li><%= link_to "お城構成データ一覧", castle_structures_path %>を追加</li>
-          <li><%= link_to "精算結果一覧", payoffs_path %>を追加</li>
+          <li><%= link_to "お城構成データ一覧", castle_structures_path %>を公開</li>
+          <li><%= link_to "精算結果一覧", payoffs_path %>を公開</li>
           <li><%= link_to "次回の組み合わせ一覧", next_battles_path %>に建築、護衛、商品別の構成数、売上、攻撃・支援・防衛戦果補正を追加</li>
           <li><%= link_to "精算結果一覧", payoffs_path %>に次回のブロック番号での検索結果を追加</li>
           <li>数値検索の検索フォームでの範囲指定の記号を「-」から「~」に変更</li>
         </ul>
         <li>2018/2/1</li>
         <ul>
-          <li><%= link_to "次回の組み合わせ一覧", next_battles_path %>を追加</li>
+          <li><%= link_to "次回の組み合わせ一覧", next_battles_path %>を公開</li>
           <li><%= link_to "城塞データ一覧", fortress_all_data_path %>に次回のブロック番号での検索機能を追加</li>
         </ul>
         <li>2018/1/26</li>

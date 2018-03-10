@@ -15,7 +15,7 @@ class RegaliaListsController < ApplicationController
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "regalia_id", "regalia_id_form")
-    reference_word_assign(params, "name", "name_form", "cont")
+    reference_text_assign(params, "name", "name_form")
         
     @regalia_id_form = params["regalia_id_form"]
     @name_form = params["name_form"]

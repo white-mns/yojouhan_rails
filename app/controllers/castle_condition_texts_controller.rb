@@ -18,8 +18,8 @@ class CastleConditionTextsController < ApplicationController
     
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
-    reference_word_assign(params, "condition_text", "condition_text_form","cont")
+    reference_text_assign(params, "p_name_name", "p_name_form")
+    reference_text_assign(params, "condition_text", "condition_text_form")
         
     @result_no_form = params["result_no_form"]
     @e_no_form = params["e_no_form"]

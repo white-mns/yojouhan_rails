@@ -49,6 +49,11 @@ module MyUtility
 
   end
   
+  # 文字列の文字列を分割し、部分一致の条件でRansackが参照する配列に割り当てる
+  def reference_text_assign(param_adr, data_name, param_key)
+    reference_word_assign(param_adr, data_name, param_key, "cont")
+  end
+
   # 数値の文字列を分割し、Ransackが参照する配列に割り当てる
   def reference_number_assign(param_adr, data_name, param_key)
     if(!param_adr[param_key]) then

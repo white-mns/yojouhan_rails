@@ -16,7 +16,7 @@ class FrameTypeListsController < ApplicationController
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "frame_type_id", "frame_type_id_form")
-    reference_word_assign(params, "name", "name_form", "cont")
+    reference_text_assign(params, "name", "name_form")
         
     @frame_type_id_form = params["frame_type_id_form"]
     @name_form = params["name_form"]

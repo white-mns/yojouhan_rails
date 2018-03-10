@@ -18,7 +18,7 @@ class StatusesController < ApplicationController
     
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
+    reference_text_assign(params, "p_name_name", "p_name_form")
     reference_number_assign(params, "acc_profit", "acc_profit_form")
     reference_number_assign(params, "rp", "rp_form")
     reference_number_assign(params, "repute", "repute_form")

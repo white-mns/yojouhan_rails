@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Result no:</strong>
+  <%= @total_megane.result_no %>
+</p>
+
+<p>
+  <strong>Generate no:</strong>
+  <%= @total_megane.generate_no %>
+</p>
+
+<p>
+  <strong>E no:</strong>
+  <%= @total_megane.e_no %>
+</p>
+
+<p>
+  <strong>Megane type:</strong>
+  <%= @total_megane.megane_type_id %>
+</p>
+
+<p>
+  <strong>Megane count:</strong>
+  <%= @total_megane.megane_count %>
+</p>
+
+<%= link_to 'Edit', edit_total_megane_path(@total_megane) %> |
+<%= link_to 'Back', total_meganes_path %>

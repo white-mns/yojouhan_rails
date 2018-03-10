@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217135110) do
+ActiveRecord::Schema.define(version: 20180310112125) do
+
+  create_table "acc_meganes", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.integer  "megane_type_id", limit: 4
+    t.integer  "megane_count",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "acc_meganes", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "acc_meganes", ["megane_count"], name: "index_acc_meganes_on_megane_count", using: :btree
+  add_index "acc_meganes", ["megane_type_id"], name: "index_acc_meganes_on_megane_type_id", using: :btree
 
   create_table "add_effect_lists", force: :cascade do |t|
     t.integer  "add_effect_id", limit: 4
@@ -248,6 +262,32 @@ ActiveRecord::Schema.define(version: 20180217135110) do
   add_index "markets", ["unit_type"], name: "index_markets_on_unit_type", using: :btree
   add_index "markets", ["value"], name: "index_markets_on_value", using: :btree
 
+  create_table "megane_type_lists", force: :cascade do |t|
+    t.integer  "megane_type_id", limit: 4
+    t.string   "name",           limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "megane_type_lists", ["megane_type_id"], name: "index_megane_type_lists_on_megane_type_id", using: :btree
+  add_index "megane_type_lists", ["name"], name: "index_megane_type_lists_on_name", using: :btree
+
+  create_table "meganes", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.integer  "page_type",      limit: 4
+    t.integer  "page_no",        limit: 4
+    t.integer  "megane_type_id", limit: 4
+    t.integer  "megane_count",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "meganes", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "meganes", ["megane_count"], name: "index_meganes_on_megane_count", using: :btree
+  add_index "meganes", ["megane_type_id"], name: "index_meganes_on_megane_type_id", using: :btree
+
   create_table "names", force: :cascade do |t|
     t.integer  "result_no",   limit: 4
     t.integer  "generate_no", limit: 4
@@ -348,6 +388,20 @@ ActiveRecord::Schema.define(version: 20180217135110) do
   add_index "statuses", ["rp"], name: "index_statuses_on_rp", using: :btree
   add_index "statuses", ["smile"], name: "index_statuses_on_smile", using: :btree
   add_index "statuses", ["tact"], name: "index_statuses_on_tact", using: :btree
+
+  create_table "total_meganes", force: :cascade do |t|
+    t.integer  "result_no",      limit: 4
+    t.integer  "generate_no",    limit: 4
+    t.integer  "e_no",           limit: 4
+    t.integer  "megane_type_id", limit: 4
+    t.integer  "megane_count",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "total_meganes", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
+  add_index "total_meganes", ["megane_count"], name: "index_total_meganes_on_megane_count", using: :btree
+  add_index "total_meganes", ["megane_type_id"], name: "index_total_meganes_on_megane_type_id", using: :btree
 
   create_table "unit_orig_name_lists", force: :cascade do |t|
     t.integer  "orig_name_id", limit: 4

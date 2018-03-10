@@ -1,0 +1,2 @@
+module AccMeganesHelper
+end

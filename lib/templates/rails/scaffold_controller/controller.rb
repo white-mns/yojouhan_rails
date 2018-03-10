@@ -21,9 +21,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
     params[:q]  = params[:q] ? params[:q] : {}
     
-    reference_number_assign(params, "result_no", "result_no_form")
-    reference_number_assign(params, "e_no", "e_no_form")
-    reference_word_assign(params, "p_name_name", "p_name_form", "cont")
+    reference_text_assign(params, "p_name_name", "p_name_form")
     <% attributes.reject(&:password_digest?).each do |attribute| -%>
     reference_number_assign(params, "<%= attribute.name %>", "<%= attribute.name %>_form")
     <% end -%>

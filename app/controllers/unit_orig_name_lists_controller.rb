@@ -15,7 +15,7 @@ class UnitOrigNameListsController < ApplicationController
     params[:q]  = params[:q] ? params[:q] : {}
     
     reference_number_assign(params, "orig_name_id", "orig_name_id_form")
-    reference_word_assign(params, "name", "name_form", "cont")
+    reference_text_assign(params, "name", "name_form")
     
     @orig_name_id_form = params["orig_name_id_form"]
     @name_form = params["name_form"]

@@ -1,0 +1,102 @@
+<h1>眼鏡ｸｲｯ回数一覧(更新回別)</h1>
+<br>
+<div class="col-lg-12">
+  <div class="bs-component">
+    <ul class="breadcrumb" style="margin-bottom: 5px;">
+      <li><%= link_to "累計眼鏡ｸｲｯ回数", acc_meganes_path %></li>
+      <li>眼鏡ｸｲｯ回数一覧(更新回別)</li>
+      <li><%= link_to "眼鏡ｸｲｯ回数一覧(ページ別)", meganes_path %></li>
+    </ul>
+  </div>
+</div><br>
+
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-md-12">
+        <p>眼鏡ｸｲｯ回数は丸括弧「（）」で囲まれた文字の中に「眼鏡」という単語が入っていた場合にカウントされます。
+        キャラ間のメッセージ、キャラクターリストページで眼鏡に触れたものをカウントしています。</p>
+        <p class="formNum">テキストフォームの隣に赤い破線がある項目は数値検索です。<br>
+        「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。<br>
+        OR指定と範囲指定を同時に行うことはできません。</p>
+        <p class="formText">テキストフォームの隣に青い太線がある項目は文字検索です。<br>
+        半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます<br>
+        ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。</p>
+        <p><span id="example_open" class="example_select pointer" onclick="example_open(true)">入力例（クリックで開きます）<br></span>
+        <span id="example_close" class="example_select pointer" style="display:none;" onclick="example_open(false)">入力例（クリックで閉じます）<br></span>
+        <div id="example" style="display:none;">
+            <p class="formNum">数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット<br>
+            「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。</p>
+            <p class="formText">「眼鏡ｸｲｯ」と入力　→　「眼鏡ｸｲｯ」の単語を含むものが検索結果にヒット<br>
+            「"眼鏡ｸｲｯ"」　→　完全一致で「眼鏡ｸｲｯ」のみ検索結果にヒット<br>
+            「-眼鏡ｸｲｯ」　→　「眼鏡ｸｲｯ」の単語を含まないものが検索結果にヒット<br>
+            「-"眼鏡ｸｲｯ"」　→　完全一致で「眼鏡ｸｲｯ」以外が検索結果にヒット。エア眼鏡ｸｲｯはヒットします。<br>
+            「眼鏡ｸｲｯ -"眼鏡ｸｲｯ"」　→　「眼鏡ｸｲｯ」が含まれる単語で完全一致の「眼鏡ｸｲｯ」以外がヒット。つまり、エア眼鏡ｸｲｯがヒットします。<br>
+            「眼鏡 ｸｲｯ」　→　「眼鏡」と「ｸｲｯ」の2つの単語が含まれるものが検索結果にヒット<br>
+            「眼鏡 ｸｲｯ/ﾊﾟﾘｰﾝ」　→　「眼鏡」が含まれ、さらに「ｸｲｯ」か「ﾊﾟﾘｰﾝ」を含むものが検索結果にヒット<br>
+            「-ｸｲｯ -ﾊﾟﾘｰﾝ」　→　「ｸｲｯ」もしくは「ﾊﾟﾘｰﾝ」という単語が含まれるものを検索結果から除外</p></div></p>
+<%= search_form_for @search do |f| %>
+<table id="search_close" class="table table-striped table-bordered table-hover" style="display:none;" onclick="search_open(true);">
+
+  <tbody>
+  <tr><td colspan="2" style="cursor:pointer;">絞り込み検索<span style="font-size:80%">(クリックで開きます)</span></td></tr>
+  </tbody>
+</table>
+
+<table id="search_table" class="table table-striped table-bordered table-hover">
+
+  <tbody>
+  <tr><td colspan="2" style="cursor:pointer;" onclick="search_open(false);">絞り込み検索<span style="font-size:80%">(クリックで閉じます)</span></td></tr>
+  <tr><td><%= f.label :result_no_form, '更新回' %></td>
+    <td class="formNum"><%= text_field_tag :result_no_form, @result_no_form %></td></tr>
+  <tr><td><%= f.label :e_no_form, 'Eno' %></td>
+    <td class="formNum"><%= text_field_tag :e_no_form, @e_no_form %></td></tr>
+  <tr><td><%= f.label :p_name_form, 'キャラクター名' %></td>
+    <td class="formText"><%= text_field_tag :p_name_form, @p_name_form %></td></tr>
+  <tr><td><%= f.label :megane_type_id_form, '眼鏡の扱い方' %></td>
+    <td class="formText"><%= text_field_tag :megane_type_id_form, @megane_type_id_form %></td></tr>
+  <tr><td><%= f.label :megane_count_form, 'ｸｲｯ回数' %></td>
+    <td class="formNum"><%= text_field_tag :megane_count_form, @megane_count_form %></td></tr>
+  <tr><td></td><td>
+    <%= f.submit '検索する' %>
+    </td></tr>
+</tbody>
+</table>
+ <% end %>
+   </div>
+  </div>
+</div>
+<%= paginate(@total_meganes) %><br>
+ヒット数：<%= @count %>件<br><br>
+
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th><%= sort_link(@search, :result_no,'更新回', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :megane_type_id, '眼鏡の扱い方', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :megane_count, '回数', default_order: :desc) %></th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @total_meganes.each do |total_megane| %>
+      <tr>
+        <td><%= total_megane.result_no %></td>
+        <td><%= total_megane.p_name.name.html_safe + "(" + sprintf("%d",total_megane.e_no) + ")" %></td>
+        <td><%= total_megane.megane_type_name.name %></td>
+        <td><%= total_megane.megane_count %></td>
+        <td><%= result_num = sprintf("%d", total_megane.result_no)
+                link_to " 詳細", meganes_path + "?result_no_form=" + result_num + 
+                "&e_no_form=" + sprintf("%d", total_megane.e_no) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+<%= paginate(@total_meganes) %>

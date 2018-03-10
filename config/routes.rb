@@ -1,4 +1,10 @@
 Loe::Application.routes.draw do
+  resources :acc_meganes
+  resources :total_meganes
+  resources :meganes
+  resources :megane_type_lists
+  resources :megane_type_lists
+  resources :megane_type_lists
   resources :add_effect_lists
   resources :markets
   resources :payoffs
