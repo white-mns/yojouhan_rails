@@ -1,0 +1,37 @@
+<%= form_for(@multiple_buying) do |f| %>
+  <% if @multiple_buying.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multiple_buying.errors.count, "error") %> prohibited this multiple_buying from being saved:</h2>
+
+      <ul>
+      <% @multiple_buying.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result_no %><br>
+    <%= f.number_field :result_no %>
+  </div>
+  <div class="field">
+    <%= f.label :generate_no %><br>
+    <%= f.number_field :generate_no %>
+  </div>
+  <div class="field">
+    <%= f.label :e_no %><br>
+    <%= f.number_field :e_no %>
+  </div>
+  <div class="field">
+    <%= f.label :battle_no %><br>
+    <%= f.number_field :battle_no %>
+  </div>
+  <div class="field">
+    <%= f.label :multiple_buying %><br>
+    <%= f.number_field :multiple_buying %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
