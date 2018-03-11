@@ -5,8 +5,8 @@ class MultipleBuyingsController < ApplicationController
   # GET /multiple_buyings
   def index
     param_set
-    @count	= MultipleBuying.includes([:p_name, :fortress_data]).group([:result_no, :e_no]).search(params[:q]).result.count().keys().size()
-    @search	= MultipleBuying.includes([:p_name, :fortress_data]).group([:result_no, :e_no])
+    @count	= MultipleBuying.includes([:p_name, :fortress_data, :buy_type_name]).group([:result_no, :e_no, :buy_type]).search(params[:q]).result.count().keys().size()
+    @search	= MultipleBuying.includes([:p_name, :fortress_data, :buy_type_name]).group([:result_no, :e_no, :buy_type])
         .select("*, max(multiple_buyings.multiple_buying) AS multiple_buying_max, min(multiple_buyings.multiple_buying) AS multiple_buying_min,
                     max(multiple_buyings.buy_num) AS buy_num_max, min(multiple_buyings.buy_num) AS buy_num_min")
         .page(params[:page]).search(params[:q])
@@ -27,6 +27,7 @@ class MultipleBuyingsController < ApplicationController
     reference_number_assign(params, "multiple_buying", "multiple_buying_form")
     reference_number_assign(params, "buy_num", "buy_num_form")
     reference_number_assign(params, "fortress_data_grand", "grand_form")
+    reference_text_assign(params, "buy_type_name_name", "buy_type_form")
         
     @result_no_form = params["result_no_form"]
     @p_name_form = params["p_name_form"]
@@ -35,6 +36,7 @@ class MultipleBuyingsController < ApplicationController
     @multiple_buying_form = params["multiple_buying_form"]
     @buy_num_form = params["buy_num_form"]
     @grand_form = params["grand_form"]
+    @buy_type_form = params["buy_type_form"]
   end
   # GET /multiple_buyings/1
   #def show
