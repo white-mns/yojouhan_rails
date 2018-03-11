@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buy_type_id: 1
+  name: MyString
+
+two:
+  buy_type_id: 1
+  name: MyString

@@ -1,4 +1,5 @@
 Loe::Application.routes.draw do
+  resources :buy_type_lists
   resources :multiple_buyings
   resources :acc_meganes
   resources :total_meganes
