@@ -67,8 +67,8 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :result_no,'更新回', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
       <th><%= sort_link(@search, :battle_no, 'ブロック', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
       <th><%= sort_link(@search, :multiple_buying, '多重購入', default_order: :desc) %></th>
       <th><%= sort_link(@search, :buy_num, '販売数', default_order: :desc) %></th>
       <th><%= sort_link(@search, :fortress_data_grand, '壮大', default_order: :desc) %></th>
@@ -80,8 +80,8 @@
     <% @multiple_buyings.each do |multiple_buying| %>
       <tr>
         <td><%= multiple_buying.result_no %></td>
-        <td><%= multiple_buying.p_name.name.html_safe + "(" + sprintf("%d",multiple_buying.e_no) + ")" %></td>
         <td><%= multiple_buying.battle_no %></td>
+        <td><%= multiple_buying.p_name.name.html_safe + "(" + sprintf("%d",multiple_buying.e_no) + ")" %></td>
         <td><%= if multiple_buying.multiple_buying_max != multiple_buying.multiple_buying_min then
                     sprintf("%d", multiple_buying.multiple_buying_min) + "～" + sprintf("%d", multiple_buying.multiple_buying_max)
                 else
