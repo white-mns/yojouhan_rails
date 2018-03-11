@@ -44,8 +44,10 @@
     <td class="formNum"><%= text_field_tag :battle_no_form, @battle_no_form %></td></tr>
   <tr><td><%= f.label :multiple_buying_form, '多重購入' %></td>
     <td class="formNum"><%= text_field_tag :multiple_buying_form, @multiple_buying_form %></td></tr>
-  <tr><td><%= f.label :buy_num_form, '販売数、サービス回数' %></td>
+  <tr><td><%= f.label :buy_num_form, '商品販売数、サービス回数' %></td>
     <td class="formNum"><%= text_field_tag :buy_num_form, @buy_num_form %></td></tr>
+  <tr><td><%= f.label :buy_type_form, '販売種別' %></td>
+    <td class="formText"><%= text_field_tag :buy_type_form, @buy_type_form %></td></tr>
   <tr><td><%= f.label :multiple_buying_form, '壮大' %></td>
     <td class="formNum"><%= text_field_tag :grand_form, @grand_form %></td></tr>
   <tr><td></td><td>
@@ -71,6 +73,7 @@
       <th><%= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc) %></th>
       <th><%= sort_link(@search, :multiple_buying, '多重購入', default_order: :desc) %></th>
       <th><%= sort_link(@search, :buy_num, '販売数', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :buy_type, '販売種別', default_order: :desc) %></th>
       <th><%= sort_link(@search, :fortress_data_grand, '壮大', default_order: :desc) %></th>
       <th colspan="4">結果リンク</th>
     </tr>
@@ -92,6 +95,7 @@
                 else
                    multiple_buying.buy_num_max
                 end %></td>
+        <td><%= multiple_buying.buy_type_name.name %></td>
         <td><%= multiple_buying.fortress_data.grand %></td>
     	<td><%= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",multiple_buying.e_no)+".html", :target => "_blank" %></td>
     	<td><%= link_to " 戦闘", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/battle"+sprintf("%d",multiple_buying.battle_no)+".html", :target => "_blank" %></td>

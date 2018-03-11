@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310171637) do
+ActiveRecord::Schema.define(version: 20180311103811) do
 
   create_table "acc_meganes", force: :cascade do |t|
     t.integer  "result_no",      limit: 4
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20180310171637) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "buy_type_lists", force: :cascade do |t|
+    t.integer  "buy_type_id", limit: 4
+    t.string   "name",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "buy_type_lists", ["buy_type_id"], name: "index_buy_type_lists_on_buy_type_id", using: :btree
+  add_index "buy_type_lists", ["name"], name: "index_buy_type_lists_on_name", using: :btree
 
   create_table "castle_condition_lists", force: :cascade do |t|
     t.integer  "castle_condition_id", limit: 4
@@ -297,10 +307,12 @@ ActiveRecord::Schema.define(version: 20180310171637) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "buy_num",         limit: 4
+    t.integer  "buy_type",        limit: 4
   end
 
   add_index "multiple_buyings", ["battle_no"], name: "index_multiple_buyings_on_battle_no", using: :btree
   add_index "multiple_buyings", ["buy_num"], name: "index_multiple_buyings_on_buy_num", using: :btree
+  add_index "multiple_buyings", ["buy_type"], name: "index_multiple_buyings_on_buy_type", using: :btree
   add_index "multiple_buyings", ["e_no", "result_no", "generate_no"], name: "unique_eno", using: :btree
   add_index "multiple_buyings", ["multiple_buying"], name: "index_multiple_buyings_on_multiple_buying", using: :btree
 
