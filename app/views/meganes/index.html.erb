@@ -13,7 +13,7 @@
 <div class="bs-docs-section">
   <div class="row">
     <div class="col-md-12">
-        <p>眼鏡ｸｲｯ回数は丸括弧「（ ）」で囲まれた文字の中に「眼鏡」という単語が入っていた場合にカウントされます。
+        <p>眼鏡ｸｲｯ回数は丸括弧「（ ）」で囲まれた文字の中に「眼鏡」もしくは「ｸｲｯ」という単語が入っていた場合にカウントされます。
         個別メッセージ、広域メッセージ、マーケット、戦闘中でのメッセージで眼鏡に触れたものをカウントしています。</p>
         <p class="formNum">テキストフォームの隣に赤い破線がある項目は数値検索です。<br>
         「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。<br>
@@ -93,12 +93,12 @@
                 end %></td>
         <td><%= megane.megane_type_name.name %></td>
         <td><%= megane.megane_count %></td>
-        <td><%= if megane.e_no < 10000 then
+        <td><%= if megane.e_no < 10001 then
                     case megane.page_type
                     when 1 then
                         link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",megane.page_no)+".html", :target => "_blank"
                     when 2 then
-                        link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/battle"+sprintf("%04d",megane.page_no)+".html", :target => "_blank"
+                        link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/battle"+sprintf("%d",megane.page_no)+".html", :target => "_blank"
                     when 3 then
                         link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/list.html", :target => "_blank"
                     when 4 then
@@ -107,14 +107,14 @@
                     end
                 else
                 end %></td>
-        <td><%= if megane.e_no < 10000 then
+        <td><%= if megane.e_no < 10001 then
                     if megane.result_no < @last_result then
                         generate_text = megane.generate_no > 0 ? "_"+sprintf("%d",megane.generate_no) : "";
                         case megane.page_type
                         when 1 then
                             link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", megane.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",megane.page_no)+".html", :target => "_blank"
                         when 2 then
-                            link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", megane.result_no)+generate_text+"/RESULT/battle"+sprintf("%04d",megane.page_no)+".html", :target => "_blank"
+                            link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", megane.result_no)+generate_text+"/RESULT/battle"+sprintf("%d",megane.page_no)+".html", :target => "_blank"
                         when 3 then
                             link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", megane.result_no)+generate_text+"/list.html", :target => "_blank"
                         when 4 then
