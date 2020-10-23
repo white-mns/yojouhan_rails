@@ -27,4 +27,6 @@ Loe::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.logger = Logger.new("log/development.log", 5 , 10.megabytes)
+
+  config.hosts << "example.com"
 end
