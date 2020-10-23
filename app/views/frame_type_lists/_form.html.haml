@@ -1,0 +1,19 @@
+= form_for(@frame_type_list) do |f|
+  - if @frame_type_list.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@frame_type_list.errors.count, "error")
+        prohibited this frame_type_list from being saved:
+      %ul
+        - @frame_type_list.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :frame_type_id
+    %br/
+    = f.number_field :frame_type_id
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .actions
+    = f.submit

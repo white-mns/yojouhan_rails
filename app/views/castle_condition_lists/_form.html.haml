@@ -1,0 +1,19 @@
+= form_for(@castle_condition_list) do |f|
+  - if @castle_condition_list.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@castle_condition_list.errors.count, "error")
+        prohibited this castle_condition_list from being saved:
+      %ul
+        - @castle_condition_list.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :castle_condition_id
+    %br/
+    = f.number_field :castle_condition_id
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .actions
+    = f.submit

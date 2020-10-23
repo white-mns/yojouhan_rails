@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Megane type:
+  = @megane_type_list.megane_type_id
+%p
+  %strong Name:
+  = @megane_type_list.name
+= link_to 'Edit', edit_megane_type_list_path(@megane_type_list)
+|
+= link_to 'Back', megane_type_lists_path

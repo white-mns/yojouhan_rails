@@ -1,0 +1,113 @@
+%h1 四城半データ小屋
+%p
+  このサイトでは
+  %a{:href => "http://blacktea.sakura.ne.jp/teaconvini/", :target => "_blank"}> 四畳半魔王城～本日営業中！～
+  を解析して得られる情報を扱っています。
+  %br/
+  データ更新は本家の圧縮結果が公開されてから行います。
+%br/
+%p
+  第#{@last_result}回#{"再" if @last_generate > 0}#{num = 2; text = ""; while num <= @last_generate do num += 1; text += "々" end; text}更新結果まで反映済です。
+.col-lg-12
+  .bs-component
+    .well.well-sm
+      %h2 サイトマップ
+      %ul
+        %li 個人データ
+        %ul
+          %li= link_to "アイテム一覧", items_path
+          %li= link_to "ステータス一覧", statuses_path
+          %li= link_to "城塞データ一覧", fortress_all_data_path
+          %li= link_to "城塞データ＋精算結果一覧", fortress_data_and_payoffs_path
+          %li= link_to "お城構成データ一覧", castle_structures_path
+          %li= link_to "精算結果一覧", payoffs_path
+          %br/
+          %li= link_to "城塞データ(抜粋)一覧", fortress_data_path
+          %li= link_to "属性防御一覧", fortress_guards_path
+          %li= link_to "城状況一覧", castle_condition_texts_path
+        %li 結果データ
+        %ul
+          %li= link_to "次回の組み合わせ一覧", next_battles_path
+          %li= link_to "マーケット一覧", markets_path
+          %li= link_to "多重購入一覧", multiple_buyings_path
+        %li= link_to "眼鏡ｸｲｯ", acc_meganes_path
+    .well.well-sm
+      %h2 更新履歴
+      %ul
+        %li 2018/3/11
+        %ul
+          %li
+            = link_to "多重購入一覧", multiple_buyings_path
+            を公開
+        %li 2018/3/10
+        %ul
+          %li
+            = link_to "累計眼鏡ｸｲｯ回数ランキング", acc_meganes_path
+            を公開
+          %li
+            = link_to "眼鏡ｸｲｯ回数一覧(更新回別)", total_meganes_path
+            を公開
+          %li
+            = link_to "眼鏡ｸｲｯ回数一覧(ページ別)", meganes_path
+            を公開
+        %li 2018/2/17
+        %ul
+          %li 属性防御値の検索フォームの枠の目印が文字検索になっていたのを数値検索に修正
+        %li 2018/2/17
+        %ul
+          %li
+            = link_to "お城構成データ一覧", castle_structures_path
+            に付加、在庫を表示
+          %li
+            = link_to "城塞データ＋精算結果一覧", fortress_data_and_payoffs_path
+            を追加
+        %li 2018/2/13
+        %ul
+          %li
+            = link_to "マーケット一覧", markets_path
+            を公開
+        %li 2018/2/9
+        %ul
+          %li
+            = link_to "お城構成データ一覧", castle_structures_path
+            を公開
+          %li
+            = link_to "精算結果一覧", payoffs_path
+            を公開
+          %li
+            = link_to "次回の組み合わせ一覧", next_battles_path
+            に建築、護衛、商品別の構成数、売上、攻撃・支援・防衛戦果補正を追加
+          %li
+            = link_to "精算結果一覧", payoffs_path
+            に次回のブロック番号での検索結果を追加
+          %li 数値検索の検索フォームでの範囲指定の記号を「-」から「~」に変更
+        %li 2018/2/1
+        %ul
+          %li
+            = link_to "次回の組み合わせ一覧", next_battles_path
+            を公開
+          %li
+            = link_to "城塞データ一覧", fortress_all_data_path
+            に次回のブロック番号での検索機能を追加
+        %li 2018/1/26
+        %ul
+          %li
+            = link_to "ステータス一覧", statuses_path
+            を公開
+          %li
+            = link_to "城塞データ一覧", fortress_all_data_path
+            を公開
+          %li
+            = link_to "城塞データ(抜粋)一覧", fortress_data_path
+            を公開
+          %li
+            = link_to "属性防御一覧", fortress_guards_path
+            を公開
+          %li
+            = link_to "城状況一覧", castle_condition_texts_path
+            を公開
+        %li 2018/1/21
+        %ul
+          %li
+            = link_to "アイテム一覧", items_path
+            を公開

@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @castle_condition_text.result_no
+%p
+  %strong Generate no:
+  = @castle_condition_text.generate_no
+%p
+  %strong E no:
+  = @castle_condition_text.e_no
+%p
+  %strong Condition text:
+  = @castle_condition_text.condition_text
+= link_to 'Edit', edit_castle_condition_text_path(@castle_condition_text)
+|
+= link_to 'Back', castle_condition_texts_path

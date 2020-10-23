@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @fortress_guard.result_no
+%p
+  %strong Generate no:
+  = @fortress_guard.generate_no
+%p
+  %strong E no:
+  = @fortress_guard.e_no
+%p
+  %strong Pysics:
+  = @fortress_guard.pysics
+%p
+  %strong Electric shock:
+  = @fortress_guard.electric_shock
+%p
+  %strong Cold:
+  = @fortress_guard.cold
+%p
+  %strong Flame:
+  = @fortress_guard.flame
+%p
+  %strong Saint devil:
+  = @fortress_guard.saint_devil
+= link_to 'Edit', edit_fortress_guard_path(@fortress_guard)
+|
+= link_to 'Back', fortress_guards_path

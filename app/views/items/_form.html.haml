@@ -1,0 +1,63 @@
+= form_for(@item) do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@item.errors.count, "error")
+        prohibited this item from being saved:
+      %ul
+        - @item.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .field
+    = f.label :i_no
+    %br/
+    = f.number_field :i_no
+  .field
+    = f.label :type
+    %br/
+    = f.number_field :type
+  .field
+    = f.label :orig_name
+    %br/
+    = f.number_field :orig_name
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :strength
+    %br/
+    = f.number_field :strength
+  .field
+    = f.label :fuka1
+    %br/
+    = f.number_field :fuka1
+  .field
+    = f.label :fuka2
+    %br/
+    = f.number_field :fuka2
+  .field
+    = f.label :guard_elemental
+    %br/
+    = f.number_field :guard_elemental
+  .field
+    = f.label :stock
+    %br/
+    = f.number_field :stock
+  .field
+    = f.label :value
+    %br/
+    = f.number_field :value
+  .actions
+    = f.submit

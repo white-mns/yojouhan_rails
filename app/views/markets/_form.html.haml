@@ -1,0 +1,103 @@
+= form_for(@market) do |f|
+  - if @market.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@market.errors.count, "error")
+        prohibited this market from being saved:
+      %ul
+        - @market.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :market_no
+    %br/
+    = f.number_field :market_no
+  .field
+    = f.label :unit_type
+    %br/
+    = f.number_field :unit_type
+  .field
+    = f.label :orig_name
+    %br/
+    = f.number_field :orig_name
+  .field
+    = f.label :name
+    %br/
+    = f.number_field :name
+  .field
+    = f.label :value
+    %br/
+    = f.number_field :value
+  .field
+    = f.label :attack
+    %br/
+    = f.number_field :attack
+  .field
+    = f.label :biattack
+    %br/
+    = f.number_field :biattack
+  .field
+    = f.label :grand
+    %br/
+    = f.number_field :grand
+  .field
+    = f.label :guard_elemental
+    %br/
+    = f.number_field :guard_elemental
+  .field
+    = f.label :guard_value
+    %br/
+    = f.number_field :guard_value
+  .field
+    = f.label :forecast
+    %br/
+    = f.number_field :forecast
+  .field
+    = f.label :caution
+    %br/
+    = f.number_field :caution
+  .field
+    = f.label :continuance
+    %br/
+    = f.number_field :continuance
+  .field
+    = f.label :enthusiasm
+    %br/
+    = f.number_field :enthusiasm
+  .field
+    = f.label :goodwill
+    %br/
+    = f.number_field :goodwill
+  .field
+    = f.label :charge
+    %br/
+    = f.number_field :charge
+  .field
+    = f.label :tokushu
+    %br/
+    = f.number_field :tokushu
+  .field
+    = f.label :fuka1
+    %br/
+    = f.number_field :fuka1
+  .field
+    = f.label :fuka2
+    %br/
+    = f.number_field :fuka2
+  .field
+    = f.label :strength
+    %br/
+    = f.number_field :strength
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .actions
+    = f.submit

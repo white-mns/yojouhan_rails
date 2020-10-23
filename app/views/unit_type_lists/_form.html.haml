@@ -1,0 +1,19 @@
+= form_for(@unit_type_list) do |f|
+  - if @unit_type_list.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@unit_type_list.errors.count, "error")
+        prohibited this unit_type_list from being saved:
+      %ul
+        - @unit_type_list.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :type_id
+    %br/
+    = f.number_field :type_id
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .actions
+    = f.submit

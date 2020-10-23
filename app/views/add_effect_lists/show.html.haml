@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Add effect:
+  = @add_effect_list.add_effect_id
+%p
+  %strong Name:
+  = @add_effect_list.name
+= link_to 'Edit', edit_add_effect_list_path(@add_effect_list)
+|
+= link_to 'Back', add_effect_lists_path

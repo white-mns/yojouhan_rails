@@ -1,0 +1,46 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @payoff.result_no
+%p
+  %strong Generate no:
+  = @payoff.generate_no
+%p
+  %strong E no:
+  = @payoff.e_no
+%p
+  %strong Mob:
+  = @payoff.mob
+%p
+  %strong Payoff:
+  = @payoff.payoff
+%p
+  %strong Attack:
+  = @payoff.attack
+%p
+  %strong Support:
+  = @payoff.support
+%p
+  %strong Defense:
+  = @payoff.defense
+%p
+  %strong Destroy:
+  = @payoff.destroy
+%p
+  %strong Selling:
+  = @payoff.selling
+%p
+  %strong Income:
+  = @payoff.income
+%p
+  %strong Spending:
+  = @payoff.spending
+%p
+  %strong Profit:
+  = @payoff.profit
+%p
+  %strong Loss:
+  = @payoff.loss
+= link_to 'Edit', edit_payoff_path(@payoff)
+|
+= link_to 'Back', payoffs_path

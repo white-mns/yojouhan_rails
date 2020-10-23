@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Buy type:
+  = @buy_type_list.buy_type_id
+%p
+  %strong Name:
+  = @buy_type_list.name
+= link_to 'Edit', edit_buy_type_list_path(@buy_type_list)
+|
+= link_to 'Back', buy_type_lists_path

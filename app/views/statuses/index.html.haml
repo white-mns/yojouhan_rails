@@ -1,0 +1,146 @@
+%h1 ステータス一覧
+.bs-docs-section
+  .row
+    .col-md-12
+      %p.formNum
+        テキストフォームの隣に赤い破線がある項目は数値検索です。
+        %br/
+        「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
+        %br/
+        OR指定と範囲指定を同時に行うことはできません。
+      %p.formText
+        テキストフォームの隣に青い太線がある項目は文字検索です。
+        %br/
+        半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
+        %br/
+        ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+      %p
+        %span#example_open.example_select.pointer{:onclick => "example_open(true)"}
+          入力例（クリックで開きます）
+          %br/
+        %span#example_close.example_select.pointer{:onclick => "example_open(false)", :style => "display:none;"}
+          入力例（クリックで閉じます）
+          %br/
+      #example{:style => "display:none;"}
+        %p.formNum
+          数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
+          %br/
+          「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+        %p.formText
+          「カルマ」と入力　→　「カルマ」の単語を含むものが検索結果にヒット
+          %br/
+          「"火炎商品"」　→　完全一致で「火炎商品」のみ検索結果にヒット
+          %br/
+          「-火炎商品」　→　「火炎商品」の単語を含まないものが検索結果にヒット
+          %br/
+          「-"火炎商品"」　→　完全一致で「火炎商品」以外が検索結果にヒット。カルマ火炎商品、徳火炎商品はヒットします。
+          %br/
+          「火炎商品 -"火炎商品"」　→　「火炎商品」が含まれる単語で完全一致の「火炎商品」以外がヒット。つまり、カルマ火炎商品と徳火炎商品の二つがヒットします。
+          %br/
+          「カルマ 火炎」　→　「カルマ」と「火炎」の2つの単語が含まれるものが検索結果にヒット
+          %br/
+          「カルマ 火炎/冷気」　→　「カルマ」が含まれ、さらに「火炎」か「冷気」を含むものが検索結果にヒット
+          %br/
+          「-カルマ -火炎」　→　「カルマ」もしくは「火炎」という単語が含まれるものを検索結果から除外
+      = search_form_for @search do |f|
+        %table#search_close.table.table-striped.table-bordered.table-hover{:onclick => "search_open(true);", :style => "display:none;"}
+          %tbody
+            %tr
+              %td{:colspan => "2", :style => "cursor:pointer;"}
+                絞り込み検索
+                %span{:style => "font-size:80%"} (クリックで開きます)
+        %table#search_table.table.table-striped.table-bordered.table-hover
+          %tbody
+            %tr
+              %td{:colspan => "4", :onclick => "search_open(false);", :style => "cursor:pointer;"}
+                絞り込み検索
+                %span{:style => "font-size:80%"} (クリックで閉じます)
+            %tr
+              %td= f.label :result_no_form, '更新回'
+              %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+            %tr
+              %td= f.label :e_no_form, 'Eno'
+              %td.formNum= text_field_tag :e_no_form, @e_no_form
+              %td= f.label :p_name_form, 'キャラクター名'
+              %td.formText= text_field_tag :p_name_form, @p_name_form
+            %tr
+              %td= f.label :acc_profit_form, '累積粗利'
+              %td.formNum{:colspan => "3"}= text_field_tag :acc_profit_form, @acc_profit_form
+            %tr
+              %td= f.label :rp_form, 'RP'
+              %td.formNum{:colspan => "3"}= text_field_tag :rp_form, @rp_form
+            %tr
+              %td= f.label :repute_form, '評判'
+              %td.formNum{:colspan => "3"}= text_field_tag :repute_form, @repute_form
+            %tr
+              %td= f.label :charm_form, '魅力'
+              %td.formNum= text_field_tag :charm_form, @charm_form
+              %td= f.label :tact_form, '機転'
+              %td.formNum= text_field_tag :tact_form, @tact_form
+            %tr
+              %td= f.label :smile_form, '笑顔'
+              %td.formNum= text_field_tag :smile_form, @smile_form
+              %td= f.label :elegance_form, '気品'
+              %td.formNum= text_field_tag :elegance_form, @elegance_form
+            %tr
+              %td= f.label :knowledge_form, '知識'
+              %td.formNum= text_field_tag :knowledge_form, @knowledge_form
+              %td= f.label :perseverance_form, '忍耐'
+              %td.formNum= text_field_tag :perseverance_form, @perseverance_form
+            %tr
+              %td= f.label :funds_form, '所持資金'
+              %td.formNum{:colspan => "3"}= text_field_tag :funds_form, @funds_form
+            %tr
+              %td= f.label :exp_form, '経験値'
+              %td.formNum{:colspan => "3"}= text_field_tag :exp_form, @exp_form
+            %tr
+              %td
+              %td{:colspan => "3"}
+                = f.submit '検索する'
+= paginate(@statuses)
+%br/
+ヒット数：#{@count}件
+%br/
+%br/
+.bs-docs-section
+  .row
+    .col-lg-12
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
+            %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+            %th= sort_link(@search, :acc_profit, '累積粗利', default_order: :desc)
+            %th= sort_link(@search, :rp, 'RP', default_order: :desc)
+            %th= sort_link(@search, :repute, '評判', default_order: :desc)
+            %th= sort_link(@search, :charm, '魅力', default_order: :desc)
+            %th= sort_link(@search, :tact, '機転', default_order: :desc)
+            %th= sort_link(@search, :smile, '笑顔', default_order: :desc)
+            %th= sort_link(@search, :elegance, '気品', default_order: :desc)
+            %th= sort_link(@search, :knowledge, '知識', default_order: :desc)
+            %th= sort_link(@search, :perseverance, '忍耐', default_order: :desc)
+            %th= sort_link(@search, :funds, '資金', default_order: :desc)
+            %th= sort_link(@search, :exp, '経験値', default_order: :desc)
+            %th{:colspan => "2"} 結果リンク
+        %tbody
+          - @statuses.each do |status|
+            %tr
+              %td= status.result_no
+              %td= status.p_name.name.html_safe + "(" + sprintf("%d",status.e_no) + ")"
+              %td= status.acc_profit
+              %td= status.rp
+              %td= status.repute
+              %td= status.charm
+              %td= status.tact
+              %td= status.smile
+              %td= status.elegance
+              %td= status.knowledge
+              %td= status.perseverance
+              %td= status.funds
+              %td= status.exp
+              %td= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",status.e_no)+".html", :target => "_blank"
+              %td= if  status.result_no < @last_result then                                                                                                                                        |
+                      generate_text = status.generate_no > 0 ? "_"+sprintf("%d",status.generate_no) : "";                                                                                         |
+                      link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", status.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",status.e_no)+".html", :target => "_blank" |
+                  end                                                                                                                                                                             |
+= paginate(@statuses)

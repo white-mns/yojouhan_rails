@@ -1,0 +1,39 @@
+= form_for(@megane) do |f|
+  - if @megane.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@megane.errors.count, "error")
+        prohibited this megane from being saved:
+      %ul
+        - @megane.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .field
+    = f.label :page_type
+    %br/
+    = f.number_field :page_type
+  .field
+    = f.label :page_no
+    %br/
+    = f.number_field :page_no
+  .field
+    = f.label :megane_type_id
+    %br/
+    = f.number_field :megane_type_id
+  .field
+    = f.label :megane_count
+    %br/
+    = f.number_field :megane_count
+  .actions
+    = f.submit

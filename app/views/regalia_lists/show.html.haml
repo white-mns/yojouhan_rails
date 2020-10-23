@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Regalia:
+  = @regalia_list.regalia_id
+%p
+  %strong Name:
+  = @regalia_list.name
+= link_to 'Edit', edit_regalia_list_path(@regalia_list)
+|
+= link_to 'Back', regalia_lists_path

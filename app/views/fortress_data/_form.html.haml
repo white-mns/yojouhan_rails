@@ -1,0 +1,67 @@
+= form_for(@fortress_datum) do |f|
+  - if @fortress_datum.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@fortress_datum.errors.count, "error")
+        prohibited this fortress_datum from being saved:
+      %ul
+        - @fortress_datum.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .field
+    = f.label :grand
+    %br/
+    = f.number_field :grand
+  .field
+    = f.label :caution
+    %br/
+    = f.number_field :caution
+  .field
+    = f.label :continuance
+    %br/
+    = f.number_field :continuance
+  .field
+    = f.label :enthusiasm
+    %br/
+    = f.number_field :enthusiasm
+  .field
+    = f.label :goodwill
+    %br/
+    = f.number_field :goodwill
+  .field
+    = f.label :forecast
+    %br/
+    = f.number_field :forecast
+  .field
+    = f.label :stock
+    %br/
+    = f.number_field :stock
+  .field
+    = f.label :high_grade
+    %br/
+    = f.number_field :high_grade
+  .field
+    = f.label :mob
+    %br/
+    = f.number_field :mob
+  .field
+    = f.label :drink
+    %br/
+    = f.number_field :drink
+  .field
+    = f.label :regalia
+    %br/
+    = f.number_field :regalia
+  .actions
+    = f.submit

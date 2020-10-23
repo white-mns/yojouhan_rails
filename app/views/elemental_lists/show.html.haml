@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Elemental:
+  = @elemental_list.elemental_id
+%p
+  %strong Name:
+  = @elemental_list.name
+= link_to 'Edit', edit_elemental_list_path(@elemental_list)
+|
+= link_to 'Back', elemental_lists_path

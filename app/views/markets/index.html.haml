@@ -1,0 +1,185 @@
+%h1 マーケット一覧
+.bs-docs-section
+  .row
+    .col-md-12
+      %p.formNum
+        テキストフォームの隣に赤い破線がある項目は数値検索です。
+        %br/
+        「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
+        %br/
+        OR指定と範囲指定を同時に行うことはできません。
+      %p.formText
+        テキストフォームの隣に青い太線がある項目は文字検索です。
+        %br/
+        半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
+        %br/
+        ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+      %p
+        %span#example_open.example_select.pointer{:onclick => "example_open(true)"}
+          入力例（クリックで開きます）
+          %br/
+        %span#example_close.example_select.pointer{:onclick => "example_open(false)", :style => "display:none;"}
+          入力例（クリックで閉じます）
+          %br/
+      #example{:style => "display:none;"}
+        %p.formNum
+          数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
+          %br/
+          「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+        %p.formText
+          「カルマ」と入力　→　「カルマ」の単語を含むものが検索結果にヒット
+          %br/
+          「"火炎商品"」　→　完全一致で「火炎商品」のみ検索結果にヒット
+          %br/
+          「-火炎商品」　→　「火炎商品」の単語を含まないものが検索結果にヒット
+          %br/
+          「-"火炎商品"」　→　完全一致で「火炎商品」以外が検索結果にヒット。カルマ火炎商品、徳火炎商品はヒットします。
+          %br/
+          「火炎商品 -"火炎商品"」　→　「火炎商品」が含まれる単語で完全一致の「火炎商品」以外がヒット。つまり、カルマ火炎商品と徳火炎商品の二つがヒットします。
+          %br/
+          「カルマ 火炎」　→　「カルマ」と「火炎」の2つの単語が含まれるものが検索結果にヒット
+          %br/
+          「カルマ 火炎/冷気」　→　「カルマ」が含まれ、さらに「火炎」か「冷気」を含むものが検索結果にヒット
+          %br/
+          「-カルマ -火炎」　→　「カルマ」もしくは「火炎」という単語が含まれるものを検索結果から除外
+      = search_form_for @search do |f|
+        %table#search_close.table.table-striped.table-bordered.table-hover{:onclick => "search_open(true);", :style => "display:none;"}
+          %tbody
+            %tr
+              %td{:colspan => "2", :style => "cursor:pointer;"}
+                絞り込み検索
+                %span{:style => "font-size:80%"} (クリックで開きます)
+        %table#search_table.table.table-striped.table-bordered.table-hover
+          %tbody
+            %tr
+              %td{:colspan => "4", :onclick => "search_open(false);", :style => "cursor:pointer;"}
+                絞り込み検索
+                %span{:style => "font-size:80%"} (クリックで閉じます)
+            %tr
+              %td= f.label :result_no_form, '更新回'
+              %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+            %tr
+              %td= f.label :type_form, '種別'
+              %td.formText= text_field_tag :unit_type_form, @unit_type_form
+              %td= f.label :orig_name_form, '元の名前'
+              %td.formText{:colspan => "3"}= text_field_tag :orig_name_form, @orig_name_form
+            %tr
+              %td= f.label :name_form, '名前'
+              %td.formText= text_field_tag :name_form, @name_form
+            %tr
+              %td= f.label :value_form, '価格'
+              %td.formNum{:colspan => "3"}= text_field_tag :value_form, @value_form
+            %tr
+              %td= f.label :attack_form, '攻撃'
+              %td.formNum= text_field_tag :attack_form, @attack_form
+              %td= f.label :biattack_form, '連撃'
+              %td.formNum= text_field_tag :biattack_form, @biattack_form
+            %tr
+              %td= f.label :grand_form, '壮大'
+              %td.formNum{:colspan => "3"}= text_field_tag :grand_form, @grand_form
+            %tr
+              %td= f.label :guard_elemental_form, '防御属性'
+              %td.formText= text_field_tag :guard_elemental_form, @guard_elemental_form
+              %td= f.label :guard_value_form, '防御値'
+              %td.formNum= text_field_tag :guard_value_form, @guard_value_form
+            %tr
+              %td= f.label :forecast_form, '予見'
+              %td.formNum{:colspan => "3"}= text_field_tag :forecast_form, @forecast_form
+            %tr
+              %td= f.label :caution_form, '警戒'
+              %td.formNum= text_field_tag :caution_form, @caution_form
+              %td= f.label :continuance_form, '連続'
+              %td.formNum= text_field_tag :continuance_form, @continuance_form
+            %tr
+              %td= f.label :enthusiasm_form, '熱意'
+              %td.formNum= text_field_tag :enthusiasm_form, @enthusiasm_form
+              %td= f.label :goodwill_form, '好感'
+              %td.formNum= text_field_tag :goodwill_form, @goodwill_form
+            %tr
+              %td= f.label :charge_form, '資産投入'
+              %td.formNum{:colspan => "3"}= text_field_tag :charge_form, @charge_form
+            %tr
+              %td= f.label :tokushu_form, '特殊'
+              %td.formNum{:colspan => "3"}= text_field_tag :tokushu_form, @tokushu_form
+            %tr
+              %td= f.label :fuka1_form, '付加1'
+              %td.formText= text_field_tag :fuka1_form, @fuka1_form
+              %td= f.label :fuka2_form, '付加2'
+              %td.formText= text_field_tag :fuka2_form, @fuka2_form
+            %tr
+              %td= f.label :strength_form, '強度'
+              %td.formNum{:colspan => "3"}= text_field_tag :strength_form, @strength_form
+            %tr
+              %td= f.label :e_no_form, 'Eno'
+              %td.formNum= text_field_tag :e_no_form, @e_no_form
+              %td= f.label :p_name_form, 'キャラクター名'
+              %td.formText= text_field_tag :p_name_form, @p_name_form
+            %tr
+              %td
+              %td{:colspan => "3"}
+                = f.submit '検索する'
+= paginate(@markets)
+%br/
+ヒット数：#{@count}件
+%br/
+%br/
+.bs-docs-section
+  .row
+    .col-lg-12
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
+            %th= sort_link(@search, :market_no, 'No', default_order: :desc)
+            %th= sort_link(@search, :unit_type, '種別', default_order: :desc)
+            %th= sort_link(@search, :orig_name, '元の名前', default_order: :desc)
+            %th= sort_link(@search, :name, '名前', default_order: :desc)
+            %th= sort_link(@search, :value, '価格', default_order: :desc)
+            %th= sort_link(@search, :attack, '攻撃', default_order: :desc)
+            %th= sort_link(@search, :biattack, '連撃', default_order: :desc)
+            %th= sort_link(@search, :grand, '壮大', default_order: :desc)
+            %th= sort_link(@search, :guard_elemental, '防御属性', default_order: :desc)
+            %th= sort_link(@search, :guard_value, '防御値', default_order: :desc)
+            %th= sort_link(@search, :forecast, '予見', default_order: :desc)
+            %th= sort_link(@search, :caution, '警戒', default_order: :desc)
+            %th= sort_link(@search, :continuance, '連続', default_order: :desc)
+            %th= sort_link(@search, :enthusiasm, '熱意', default_order: :desc)
+            %th= sort_link(@search, :goodwill, '好感', default_order: :desc)
+            %th= sort_link(@search, :charge, '投入資産', default_order: :desc)
+            %th= sort_link(@search, :tokushu, '特殊', default_order: :desc)
+            %th= sort_link(@search, :fuka1, '付加1', default_order: :desc)
+            %th= sort_link(@search, :fuka2, '付加2', default_order: :desc)
+            %th= sort_link(@search, :strength, '強度', default_order: :desc)
+            %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+            %th{:colspan => "2"} 結果リンク
+        %tbody
+          - @markets.each do |market|
+            %tr
+              %td= market.result_no
+              %td= market.market_no
+              %td= market.unit_type_name.name
+              %td= market.unit_orig_name.name
+              %td= market.name
+              %td= market.value
+              %td= market.attack
+              %td= market.biattack
+              %td= market.grand
+              %td= market.guard_elemental_name.name
+              %td= market.guard_value
+              %td= market.forecast
+              %td= market.caution
+              %td= market.continuance
+              %td= market.enthusiasm
+              %td= market.goodwill
+              %td= market.charge
+              %td= market.add_effect.name
+              %td= market.fuka1_name.name
+              %td= market.fuka2_name.name
+              %td= market.strength
+              %td= market.p_name.name.html_safe + "(" + sprintf("%d",market.e_no) + ")"
+              %td= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",market.e_no)+".html", :target => "_blank"
+              %td= if  market.result_no < @last_result then                                                                                                                                        |
+                      generate_text = market.generate_no > 0 ? "_"+sprintf("%d",market.generate_no) : "";                                                                                         |
+                      link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", market.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",market.e_no)+".html", :target => "_blank" |
+                  end                                                                                                                                                                             |
+= paginate(@markets)

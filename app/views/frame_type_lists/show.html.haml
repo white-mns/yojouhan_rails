@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Frame type:
+  = @frame_type_list.frame_type_id
+%p
+  %strong Name:
+  = @frame_type_list.name
+= link_to 'Edit', edit_frame_type_list_path(@frame_type_list)
+|
+= link_to 'Back', frame_type_lists_path

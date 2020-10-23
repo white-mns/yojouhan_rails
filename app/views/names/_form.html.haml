@@ -1,0 +1,31 @@
+= form_for(@name) do |f|
+  - if @name.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@name.errors.count, "error")
+        prohibited this name from being saved:
+      %ul
+        - @name.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname
+  .actions
+    = f.submit

@@ -1,0 +1,67 @@
+= form_for(@status) do |f|
+  - if @status.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@status.errors.count, "error")
+        prohibited this status from being saved:
+      %ul
+        - @status.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .field
+    = f.label :acc_profit
+    %br/
+    = f.number_field :acc_profit
+  .field
+    = f.label :rp
+    %br/
+    = f.number_field :rp
+  .field
+    = f.label :repute
+    %br/
+    = f.number_field :repute
+  .field
+    = f.label :charm
+    %br/
+    = f.number_field :charm
+  .field
+    = f.label :tact
+    %br/
+    = f.number_field :tact
+  .field
+    = f.label :smile
+    %br/
+    = f.number_field :smile
+  .field
+    = f.label :elegance
+    %br/
+    = f.number_field :elegance
+  .field
+    = f.label :knowledge
+    %br/
+    = f.number_field :knowledge
+  .field
+    = f.label :perseverance
+    %br/
+    = f.number_field :perseverance
+  .field
+    = f.label :funds
+    %br/
+    = f.number_field :funds
+  .field
+    = f.label :exp
+    %br/
+    = f.number_field :exp
+  .actions
+    = f.submit

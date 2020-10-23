@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @castle_structure.result_no
+%p
+  %strong Generate no:
+  = @castle_structure.generate_no
+%p
+  %strong E no:
+  = @castle_structure.e_no
+%p
+  %strong Frame type:
+  = @castle_structure.frame_type
+%p
+  %strong I no:
+  = @castle_structure.i_no
+= link_to 'Edit', edit_castle_structure_path(@castle_structure)
+|
+= link_to 'Back', castle_structures_path

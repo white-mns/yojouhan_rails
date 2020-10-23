@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @acc_megane.result_no
+%p
+  %strong Generate no:
+  = @acc_megane.generate_no
+%p
+  %strong E no:
+  = @acc_megane.e_no
+%p
+  %strong Megane type:
+  = @acc_megane.megane_type_id
+%p
+  %strong Megane count:
+  = @acc_megane.megane_count
+= link_to 'Edit', edit_acc_megane_path(@acc_megane)
+|
+= link_to 'Back', acc_meganes_path

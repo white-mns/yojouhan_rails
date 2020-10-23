@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @multiple_buying.result_no
+%p
+  %strong Generate no:
+  = @multiple_buying.generate_no
+%p
+  %strong E no:
+  = @multiple_buying.e_no
+%p
+  %strong Battle no:
+  = @multiple_buying.battle_no
+%p
+  %strong Multiple buying:
+  = @multiple_buying.multiple_buying
+= link_to 'Edit', edit_multiple_buying_path(@multiple_buying)
+|
+= link_to 'Back', multiple_buyings_path

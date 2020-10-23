@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @castle_structure_major_type_num.result_no
+%p
+  %strong Generate no:
+  = @castle_structure_major_type_num.generate_no
+%p
+  %strong E no:
+  = @castle_structure_major_type_num.e_no
+%p
+  %strong Build num:
+  = @castle_structure_major_type_num.build_num
+%p
+  %strong Guard num:
+  = @castle_structure_major_type_num.guard_num
+%p
+  %strong Goods num:
+  = @castle_structure_major_type_num.goods_num
+= link_to 'Edit', edit_castle_structure_major_type_num_path(@castle_structure_major_type_num)
+|
+= link_to 'Back', castle_structure_major_type_nums_path

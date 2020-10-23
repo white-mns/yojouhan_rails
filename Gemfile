@@ -11,6 +11,9 @@ group :development do
   gem 'rack-mini-profiler'
 end
 
+# Use Haml
+gem 'haml-rails'
+
 gem 'therubyracer'
 gem 'less-rails'
 gem 'less-rails-bootstrap'

@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Result no:
+  = @next_battle.result_no
+%p
+  %strong Generate no:
+  = @next_battle.generate_no
+%p
+  %strong Block no:
+  = @next_battle.block_no
+%p
+  %strong E no:
+  = @next_battle.e_no
+= link_to 'Edit', edit_next_battle_path(@next_battle)
+|
+= link_to 'Back', next_battles_path

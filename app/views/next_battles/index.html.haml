@@ -1,0 +1,145 @@
+%h1 次回の組み合わせ一覧
+.bs-docs-section
+  .row
+    .col-md-12
+      %p.formNum
+        テキストフォームの隣に赤い破線がある項目は数値検索です。
+        %br/
+        「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
+        %br/
+        OR指定と範囲指定を同時に行うことはできません。
+      %p.formText
+        テキストフォームの隣に青い太線がある項目は文字検索です。
+        %br/
+        半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
+        %br/
+        ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+      %p
+        %span#example_open.example_select.pointer{:onclick => "example_open(true)"}
+          入力例（クリックで開きます）
+          %br/
+        %span#example_close.example_select.pointer{:onclick => "example_open(false)", :style => "display:none;"}
+          入力例（クリックで閉じます）
+          %br/
+      #example{:style => "display:none;"}
+        %p.formNum
+          数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
+          %br/
+          「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+        %p.formText
+          「カルマ」と入力　→　「カルマ」の単語を含むものが検索結果にヒット
+          %br/
+          「"火炎商品"」　→　完全一致で「火炎商品」のみ検索結果にヒット
+          %br/
+          「-火炎商品」　→　「火炎商品」の単語を含まないものが検索結果にヒット
+          %br/
+          「-"火炎商品"」　→　完全一致で「火炎商品」以外が検索結果にヒット。カルマ火炎商品、徳火炎商品はヒットします。
+          %br/
+          「火炎商品 -"火炎商品"」　→　「火炎商品」が含まれる単語で完全一致の「火炎商品」以外がヒット。つまり、カルマ火炎商品と徳火炎商品の二つがヒットします。
+          %br/
+          「カルマ 火炎」　→　「カルマ」と「火炎」の2つの単語が含まれるものが検索結果にヒット
+          %br/
+          「カルマ 火炎/冷気」　→　「カルマ」が含まれ、さらに「火炎」か「冷気」を含むものが検索結果にヒット
+          %br/
+          「-カルマ -火炎」　→　「カルマ」もしくは「火炎」という単語が含まれるものを検索結果から除外
+      = search_form_for @search do |f|
+        %table#search_close.table.table-striped.table-bordered.table-hover{:onclick => "search_open(true);", :style => "display:none;"}
+          %tbody
+            %tr
+              %td{:colspan => "2", :style => "cursor:pointer;"}
+                絞り込み検索
+                %span{:style => "font-size:80%"} (クリックで開きます)
+        %table#search_table.table.table-striped.table-bordered.table-hover
+          %tbody
+            %tr
+              %td{:colspan => "4", :onclick => "search_open(false);", :style => "cursor:pointer;"}
+                絞り込み検索
+                %span{:style => "font-size:80%"} (クリックで閉じます)
+            %tr
+              %td= f.label :result_no_form, '更新回'
+              %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+            %tr
+              %td= f.label :block_no_form, 'ブロック番号'
+              %td.formNum{:colspan => "3"}= text_field_tag :block_no_form, @block_no_form
+            %tr
+              %td= f.label :e_no_form, 'Eno'
+              %td.formNum= text_field_tag :e_no_form, @e_no_form
+              %td= f.label :p_name_form, 'キャラクター名'
+              %td.formText= text_field_tag :p_name_form, @p_name_form
+            %tr
+              %td= f.label :acc_profit_form, '累積粗利'
+              %td.formNum= text_field_tag :acc_profit_form, @acc_profit_form
+              %td= f.label :rp_form, 'RP'
+              %td.formNum= text_field_tag :rp_form, @rp_form
+            %td= f.label :payoff_form, '勇者売上高'
+            %td.formNum= text_field_tag :payoff_form, @payoff_form
+            %tr
+              %td= f.label :attack_form, '攻撃戦果補正'
+              %td.formNum= text_field_tag :attack_form, @attack_form
+              %td= f.label :support_form, '支援戦果補正'
+              %td.formNum= text_field_tag :support_form, @support_form
+            %tr
+              %td= f.label :defense_form, '防衛戦果補正'
+              %td.formNum{:colspan => "3"}= text_field_tag :defense_form, @defense_form
+            %tr
+              %td= f.label :build_num_form, '建築構成数'
+              %td.formNum= text_field_tag :build_num_form, @build_num_form
+              %td= f.label :guard_num_form, '護衛構成数'
+              %td.formNum= text_field_tag :guard_num_form, @guard_num_form
+            %tr
+              %td= f.label :goods_num_form, '商品構成数'
+              %td.formNum{:colspan => "3"}= text_field_tag :goods_num_form, @goods_num_form
+            %tr
+              %td= f.label :regalia_form, 'レガリア'
+              %td.formText{:colspan => "3"}= text_field_tag :regalia_form, @regalia_form
+            %tr
+              %td
+              %td{:colspan => "3"}
+                = f.submit '検索する'
+= paginate(@next_battles)
+%br/
+ヒット数：#{@count}件
+%br/
+%br/
+.bs-docs-section
+  .row
+    .col-lg-12
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
+            %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
+            %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+            %th= sort_link(@search, :block_no, '累積粗利', default_order: :desc)
+            %th= sort_link(@search, :block_no, 'RP', default_order: :desc)
+            %th= sort_link(@search, :payoff, '売上', default_order: :desc)
+            %th= sort_link(@search, :attack, '攻撃', default_order: :desc)
+            %th= sort_link(@search, :support, '支援', default_order: :desc)
+            %th= sort_link(@search, :defense, '防衛', default_order: :desc)
+            %th= sort_link(@search, :castle_structure_major_type_num_build_num, '建築', default_order: :desc)
+            %th= sort_link(@search, :castle_structure_major_type_num_guard_num, '護衛', default_order: :desc)
+            %th= sort_link(@search, :castle_structure_major_type_num_goods_num, '商品', default_order: :desc)
+            %th= sort_link(@search, :block_no, 'レガリア', default_order: :desc)
+            %th{:colspan => "2"} 結果リンク
+        %tbody
+          - @next_battles.each do |next_battle|
+            %tr
+              %td= next_battle.result_no
+              %td= next_battle.block_no
+              %td= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
+              %td= next_battle.status.acc_profit
+              %td= next_battle.status.rp
+              %td= next_battle.payoff.payoff
+              %td= next_battle.payoff.attack
+              %td= next_battle.payoff.support
+              %td= next_battle.payoff.defense
+              %td= next_battle.castle_structure_major_type_num.build_num
+              %td= next_battle.castle_structure_major_type_num.guard_num
+              %td= next_battle.castle_structure_major_type_num.goods_num
+              %td= next_battle.fortress_data.regalia_name.name
+              %td= link_to " 結果", "http://blacktea.sakura.ne.jp/teaconvini/RESULT/c"+sprintf("%04d",next_battle.e_no)+".html", :target => "_blank"
+              %td= if  next_battle.result_no < @last_result then                                                                                                                                             |
+                      generate_text = next_battle.generate_no > 0 ? "_"+sprintf("%d",next_battle.generate_no) : "";                                                                                         |
+                      link_to " 過去結果", "http://teacon.kitunebi.com/TCV_001/"+sprintf("%03d", next_battle.result_no)+generate_text+"/RESULT/c"+sprintf("%04d",next_battle.e_no)+".html", :target => "_blank" |
+                  end                                                                                                                                                                                       |
+= paginate(@next_battles)

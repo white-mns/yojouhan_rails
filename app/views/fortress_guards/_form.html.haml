@@ -1,0 +1,43 @@
+= form_for(@fortress_guard) do |f|
+  - if @fortress_guard.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@fortress_guard.errors.count, "error")
+        prohibited this fortress_guard from being saved:
+      %ul
+        - @fortress_guard.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :result_no
+    %br/
+    = f.number_field :result_no
+  .field
+    = f.label :generate_no
+    %br/
+    = f.number_field :generate_no
+  .field
+    = f.label :e_no
+    %br/
+    = f.number_field :e_no
+  .field
+    = f.label :pysics
+    %br/
+    = f.number_field :pysics
+  .field
+    = f.label :electric_shock
+    %br/
+    = f.number_field :electric_shock
+  .field
+    = f.label :cold
+    %br/
+    = f.number_field :cold
+  .field
+    = f.label :flame
+    %br/
+    = f.number_field :flame
+  .field
+    = f.label :saint_devil
+    %br/
+    = f.number_field :saint_devil
+  .actions
+    = f.submit
