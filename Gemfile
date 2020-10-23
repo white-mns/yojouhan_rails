@@ -17,10 +17,10 @@ gem 'less-rails-bootstrap'
 gem 'twitter-bootstrap-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -29,7 +29,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -44,7 +44,7 @@ end
 
 # Use debugger
  gem 'mysql2'
- gem 'rb-readline', '~> 0.4.2'
+ gem 'rb-readline'
  gem 'hirb-unicode'
  gem 'kaminari'
  gem 'ransack'
