@@ -1,29 +1,31 @@
 # 四城半データ小屋　表示用Railsアプリ
 四城半データ小屋は[四畳半魔王城～本日営業中！～](http://blacktea.sakura.ne.jp/teaconvini/)を解析して得られるデータを扱った情報サイトです。  
 このプログラムは四城半データ小屋で実際に使用している表示用のRailsアプリです。  
-データ小屋の解析部分については[別リポジトリ](https://github.com/white-mns/yojouhan_1_parse)を参照ください。
+データ小屋の解析部分については[別リポジトリ](https://github.com/white-mns/yojouhan_parse)を参照ください。
 
 # サイト
 実際に動いているサイトです。  
-[四城半データ小屋](http://tkg.mn-s.net/yojouhan_1)
+[四城半データ小屋](http://data.teiki.org/yojouhan_1/)
 
 # 動作環境
 以下の環境での動作を確認しています  
   
-OS:CentOS release 6.5 (Final)  
-DB:MySQL  
-Ruby:2.4.0  
-Rails:4.2.10
+
+CentOS Linux release 8.2.2004  
+DB:MySQL 8.0.21  
+Ruby:2.7.1  
+Rails:6.x  
+gcc:8.3.1
 
 ## 使い方
 ・Railsの使い方を調べてなんやかんやして自分のRailsアプリが動くようにします。  
 ・このソースコードをダウンロードします。  
 
-    git clone git://github.com/white-mns/yojouhan_1_rails.git
+    git clone git://github.com/white-mns/yojouhan_rails.git
 
 ・動かします。  
 
-    cd yojouhan_1_rails
+    cd yojouhan_rails
     ./unicorn start
 
 ・動かないので動くまで格闘します。
@@ -78,7 +80,7 @@ scaffoldで必要なものは大体用意されます。
 
 	belongs_to :p_name,	    :foreign_key => [:e_no, :result_no, :generate_no], :primary_key => [:e_no, :result_no, :generate_no], :class_name => 'Name'
 
-あとは[解析プログラム](https://github.com/white-mns/yojouhan_1_parse)側で解析とアップロード機能を作ってデータを入れれば新しい解析項目が公開されます。
+あとは[解析プログラム](https://github.com/white-mns/yojouhan_parse)側で解析とアップロード機能を作ってデータを入れれば新しい解析項目が公開されます。
 
 ## ライセンス
 本ソフトウェアはMIT Licenceを採用しています。 ライセンスの詳細については`LICENSE`ファイルを参照してください。
