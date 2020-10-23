@@ -31,6 +31,7 @@ Loe::Application.routes.draw do
   resources :unit_orig_name_lists
   resources :unit_type_lists
 
+  get "top_page/privacy" 
   get "top_page/index" 
   root 'top_page#index'
 
