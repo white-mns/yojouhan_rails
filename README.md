@@ -23,9 +23,18 @@ gcc:8.3.1
 
     git clone git://github.com/white-mns/yojouhan_rails.git
 
-・動かします。  
+・必要なGemをインストールします。  
 
     cd yojouhan_rails
+    bundle install
+ 
+・DBを作成し、必要なテーブルの設定を行います。
+ 
+    bundle exec rake db:create
+    bundle exec rake db:migrate
+
+・動かします。  
+
     ./unicorn start
 
 ・動かないので動くまで格闘します。
