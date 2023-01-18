@@ -162,7 +162,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rack-contrib (2.2.0)
       rack (~> 2.0)
     rack-mini-profiler (2.2.0)
