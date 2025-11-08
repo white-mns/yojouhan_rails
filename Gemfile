@@ -11,13 +11,15 @@ group :development do
   gem 'rack-mini-profiler'
 end
 
-# Use Haml
-gem 'haml-rails'
+# Use SCSS for stylesheets
+gem 'dartsass-rails'
 
-gem 'therubyracer'
-gem 'less-rails'
-gem 'less-rails-bootstrap'
-gem 'twitter-bootstrap-rails'
+# Use Haml
+gem 'haml-rails', '2.0.1'
+
+gem 'bootstrap'
+gem "bootswatch", github: "thomaspark/bootswatch"
+gem 'ejs'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
