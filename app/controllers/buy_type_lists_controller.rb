@@ -5,8 +5,8 @@ class BuyTypeListsController < ApplicationController
   # GET /buy_type_lists
   def index
     param_set
-    @count	= BuyTypeList.search(params[:q]).result.count()
-    @search	= BuyTypeList.page(params[:page]).search(params[:q])
+    @count	= BuyTypeList.ransack(params[:q]).result.count()
+    @search	= BuyTypeList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @buy_type_lists	= @search.result.per(50)
   end

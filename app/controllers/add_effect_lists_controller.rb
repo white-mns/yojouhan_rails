@@ -5,8 +5,8 @@ class AddEffectListsController < ApplicationController
   # GET /add_effect_lists
   def index
     param_set
-    @count	= AddEffectList.search(params[:q]).result.count()
-    @search	= AddEffectList.page(params[:page]).search(params[:q])
+    @count	= AddEffectList.ransack(params[:q]).result.count()
+    @search	= AddEffectList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @add_effect_lists	= @search.result.per(50)
   end

@@ -5,8 +5,8 @@ class UnitOrigNameListsController < ApplicationController
   # GET /unit_orig_name_lists
   def index
     param_set
-    @count	= UnitOrigNameList.search(params[:q]).result.count()
-    @search	= UnitOrigNameList.page(params[:page]).search(params[:q])
+    @count	= UnitOrigNameList.ransack(params[:q]).result.count()
+    @search	= UnitOrigNameList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @unit_orig_name_lists	= @search.result.per(50)
   end

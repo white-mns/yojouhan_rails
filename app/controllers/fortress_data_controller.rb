@@ -5,24 +5,24 @@ class FortressDataController < ApplicationController
   # GET /fortress_data
   def index
     param_set
-    @count	= FortressDatum.includes([:p_name, :regalia_name]).search(params[:q]).result.count()
-    @search	= FortressDatum.includes([:p_name, :regalia_name]).page(params[:page]).search(params[:q])
+    @count	= FortressDatum.includes([:p_name, :regalia_name]).ransack(params[:q]).result.count()
+    @search	= FortressDatum.includes([:p_name, :regalia_name]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @fortress_datum	= @search.result.per(50)
   end
   
   def all_data
     param_set
-    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle]).search(params[:q]).result.count()
-    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle]).page(params[:page]).search(params[:q])
+    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle]).ransack(params[:q]).result.count()
+    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @fortress_datum	= @search.result.per(50)
   end
   
   def and_payoffs
     param_set
-    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle, :payoff, :status]).search(params[:q]).result.count()
-    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle, :payoff, :status]).page(params[:page]).search(params[:q])
+    @count	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle, :payoff, :status]).ransack(params[:q]).result.count()
+    @search	= FortressDatum.includes([:p_name, :regalia_name, :guard, :castle_condition, :next_battle, :payoff, :status]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @fortress_datum	= @search.result.per(50)
   end

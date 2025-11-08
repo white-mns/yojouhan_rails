@@ -5,8 +5,8 @@ class UnitTypeListsController < ApplicationController
   # GET /unit_type_lists
   def index
     param_set
-    @count	= UnitTypeList.search(params[:q]).result.count()
-    @search	= UnitTypeList.page(params[:page]).search(params[:q])
+    @count	= UnitTypeList.ransack(params[:q]).result.count()
+    @search	= UnitTypeList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @unit_type_lists	= @search.result.per(50)
   end

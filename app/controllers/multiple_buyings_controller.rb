@@ -5,11 +5,11 @@ class MultipleBuyingsController < ApplicationController
   # GET /multiple_buyings
   def index
     param_set
-    @count	= MultipleBuying.includes([:p_name, :fortress_data, :buy_type_name]).group([:result_no, :e_no, :buy_type]).search(params[:q]).result.count().keys().size()
+    @count	= MultipleBuying.includes([:p_name, :fortress_data, :buy_type_name]).group([:result_no, :e_no, :buy_type]).ransack(params[:q]).result.count().keys().size()
     @search	= MultipleBuying.includes([:p_name, :fortress_data, :buy_type_name]).group([:result_no, :e_no, :buy_type])
         .select("*, max(multiple_buyings.multiple_buying) AS multiple_buying_max, min(multiple_buyings.multiple_buying) AS multiple_buying_min,
                     max(multiple_buyings.buy_num) AS buy_num_max, min(multiple_buyings.buy_num) AS buy_num_min")
-        .page(params[:page]).search(params[:q])
+        .page(params[:page]).ransack(params[:q])
 
     @search.sorts = 'id asc' if @search.sorts.empty?
     @multiple_buyings	= @search.result.per(50)

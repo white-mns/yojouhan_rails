@@ -5,8 +5,8 @@ class CastleStructuresController < ApplicationController
   # GET /castle_structures
   def index
     param_set
-    @count	= CastleStructure.includes(:p_name, :frame_type_name, item: [:unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name]).search(params[:q]).result.count()
-    @search	= CastleStructure.includes(:p_name, :frame_type_name, item: [:unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name]).page(params[:page]).search(params[:q])
+    @count	= CastleStructure.includes(:p_name, :frame_type_name, item: [:unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name]).ransack(params[:q]).result.count()
+    @search	= CastleStructure.includes(:p_name, :frame_type_name, item: [:unit_type_name, :unit_orig_name, :fuka1_name, :fuka2_name]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @castle_structures	= @search.result.per(50)
   end

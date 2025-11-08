@@ -5,8 +5,8 @@ class ElementalListsController < ApplicationController
   # GET /elemental_lists
   def index
     param_set
-    @count	= ElementalList.search(params[:q]).result.count()
-    @search	= ElementalList.page(params[:page]).search(params[:q])
+    @count	= ElementalList.ransack(params[:q]).result.count()
+    @search	= ElementalList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @elemental_lists	= @search.result.per(50)
   end

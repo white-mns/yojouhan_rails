@@ -5,8 +5,8 @@ class CastleStructureMajorTypeNumsController < ApplicationController
   # GET /castle_structure_major_type_nums
   def index
     param_set
-    @count	= CastleStructureMajorTypeNum.includes([:p_name]).search(params[:q]).result.count()
-    @search	= CastleStructureMajorTypeNum.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= CastleStructureMajorTypeNum.includes([:p_name]).ransack(params[:q]).result.count()
+    @search	= CastleStructureMajorTypeNum.includes([:p_name]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @castle_structure_major_type_nums	= @search.result.per(50)
   end

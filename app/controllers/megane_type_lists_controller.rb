@@ -5,8 +5,8 @@ class MeganeTypeListsController < ApplicationController
   # GET /megane_type_lists
   def index
     param_set
-    @count	= MeganeTypeList.search(params[:q]).result.count()
-    @search	= MeganeTypeList.page(params[:page]).search(params[:q])
+    @count	= MeganeTypeList.ransack(params[:q]).result.count()
+    @search	= MeganeTypeList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @megane_type_lists	= @search.result.per(50)
   end

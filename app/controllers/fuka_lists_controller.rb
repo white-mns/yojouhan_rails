@@ -5,8 +5,8 @@ class FukaListsController < ApplicationController
   # GET /fuka_lists
   def index
     param_set
-    @count	= FukaList.search(params[:q]).result.count()
-    @search	= FukaList.page(params[:page]).search(params[:q])
+    @count	= FukaList.ransack(params[:q]).result.count()
+    @search	= FukaList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @fuka_lists	= @search.result.per(50)
   end

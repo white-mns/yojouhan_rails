@@ -5,8 +5,8 @@ class PayoffsController < ApplicationController
   # GET /payoffs
   def index
     param_set
-    @count	= Payoff.includes([:p_name, :next_battle]).search(params[:q]).result.count()
-    @search	= Payoff.includes([:p_name, :next_battle]).page(params[:page]).search(params[:q])
+    @count	= Payoff.includes([:p_name, :next_battle]).ransack(params[:q]).result.count()
+    @search	= Payoff.includes([:p_name, :next_battle]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @payoffs	= @search.result.per(50)
   end

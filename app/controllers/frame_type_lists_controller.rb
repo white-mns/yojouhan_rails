@@ -5,8 +5,8 @@ class FrameTypeListsController < ApplicationController
   # GET /frame_type_lists
   def index
     param_set
-    @count	= FrameTypeList.search(params[:q]).result.count()
-    @search	= FrameTypeList.page(params[:page]).search(params[:q])
+    @count	= FrameTypeList.ransack(params[:q]).result.count()
+    @search	= FrameTypeList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @frame_type_lists	= @search.result.per(50)
   end

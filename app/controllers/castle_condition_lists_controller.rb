@@ -5,8 +5,8 @@ class CastleConditionListsController < ApplicationController
   # GET /castle_condition_lists
   def index
     param_set
-    @count	= CastleConditionList.search(params[:q]).result.count()
-    @search	= CastleConditionList.page(params[:page]).search(params[:q])
+    @count	= CastleConditionList.ransack(params[:q]).result.count()
+    @search	= CastleConditionList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @castle_condition_lists	= @search.result.per(50)
   end

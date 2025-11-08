@@ -5,8 +5,8 @@ class MeganesController < ApplicationController
   # GET /meganes
   def index
     param_set
-    @count	= Megane.includes([:p_name, :megane_type_name]).search(params[:q]).result.count()
-    @search	= Megane.includes([:p_name, :megane_type_name]).page(params[:page]).search(params[:q])
+    @count	= Megane.includes([:p_name, :megane_type_name]).ransack(params[:q]).result.count()
+    @search	= Megane.includes([:p_name, :megane_type_name]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @meganes	= @search.result.per(50)
   end

@@ -5,8 +5,8 @@ class TotalMeganesController < ApplicationController
   # GET /total_meganes
   def index
     param_set
-    @count	= TotalMegane.includes([:p_name, :megane_type_name]).search(params[:q]).result.count()
-    @search	= TotalMegane.includes([:p_name, :megane_type_name]).page(params[:page]).search(params[:q])
+    @count	= TotalMegane.includes([:p_name, :megane_type_name]).ransack(params[:q]).result.count()
+    @search	= TotalMegane.includes([:p_name, :megane_type_name]).page(params[:page]).ransack(params[:q])
     @search.sorts = 'megane_count desc' if @search.sorts.empty?
     @total_meganes	= @search.result.per(50)
   end

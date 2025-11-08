@@ -5,8 +5,8 @@ class RegaliaListsController < ApplicationController
   # GET /regalia_lists
   def index
     param_set
-    @count	= RegaliaList.search(params[:q]).result.count()
-    @search	= RegaliaList.page(params[:page]).search(params[:q])
+    @count	= RegaliaList.ransack(params[:q]).result.count()
+    @search	= RegaliaList.page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @regalia_lists	= @search.result.per(50)
   end
