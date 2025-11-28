@@ -23,7 +23,7 @@ $hover-bg-color:                    #f8f8f8;
 
 $link-color:                        #07f;
 $nav-back-color:                    $hover-bg-color;
-$nav-hover-bg-color:                #ccc;
+$nav-hover-bg-color:                #aea;
 $nav-active-bg-color:               #888;
 $navbar-light-color:                $gray-darker;
 $navbar-light-hover-color:          $gray-darker;
@@ -66,7 +66,7 @@ body { padding-top: 5rem; }
 @import "bootswatch/darkly/bootswatch";
 
 .navbar-custom {
-    border-color: $nav-border-color;
+    border-color: MediumAquamarine;
     border-style: none none solid none;
     border-width: 0.3rem;
 }
