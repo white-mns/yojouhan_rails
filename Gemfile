@@ -18,7 +18,7 @@ gem 'dartsass-rails'
 gem 'haml-rails', '2.0.1'
 
 gem 'bootstrap'
-gem "bootswatch", github: "thomaspark/bootswatch"
+gem "bootswatch"
 gem 'ejs'
 
 # Use Uglifier as compressor for JavaScript assets

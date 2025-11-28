@@ -1,56 +1,51 @@
 !!!
-%html{:lang => "ja"}
+%html
   %head
     %meta{charset: "utf-8"}
     %title= content_for?(:title) ? yield(:title) : "四城半データ小屋"
     %meta{name: "viewport", content:"width=device-width, initial-scale=1"}
     %meta{http: {equiv: "X-UA-Compatible"}, content: "IE=edge"}
-    = csrf_meta_tag
+    = csrf_meta_tags
     = csp_meta_tag
 
     = favicon_link_tag('favicon.ico')
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
   %body
-    .navbar.navbar-default.navbar-fixed-top
+    %nav.navbar.navbar-expand-md.fixed-top.navbar-light.bg-light.navbar-custom.p-0
       .container
-        .navbar-header
-          = link_to "四城半データ小屋", root_path, :class => "navbar-brand"
-          %button.navbar-toggle{"data-target" => "#navbar-main", "data-toggle" => "collapse", :type => "button"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-        #navbar-main.navbar-collapse.collapse
-          %ul.nav.navbar-nav
-            %li.dropdown
-              %a#themes.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        = link_to "四城半データ小屋", root_path, :class => "navbar-brand"
+        %button.navbar-toggler{type: "button", data: {bs: {toggle: "collapse", target: "#navbarNavDropdown"}}, area: {controls: "navbarNavDropdown", expanded: "false", label: "Toggle navigation"}}
+          %span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarResponsive
+          %ul.navbar-nav
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ data: {bs: {:toggle =>"dropdown"}}, :href => "#", role: "button", area: {expanded: "false"}}
                 個人データ
                 %span.caret
-              %ul.dropdown-menu{"aria-labelledby" => "themes"}
-                %li= link_to "アイテム一覧", items_path
-                %li= link_to "ステータス一覧", statuses_path
-                %li= link_to "城塞データ一覧", fortress_all_data_path
-                %li= link_to "城塞データ＋精算結果一覧", fortress_data_and_payoffs_path
-                %li= link_to "お城構成データ一覧", castle_structures_path
-                %li= link_to "精算結果一覧", payoffs_path
-                %li.divider
-                %li= link_to "城塞データ(抜粋)一覧", fortress_data_path
-                %li= link_to "属性防御一覧", fortress_guards_path
-                %li= link_to "城状況一覧", castle_condition_texts_path
-            %li.dropdown
-              %a#themes.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              .dropdown-menu
+                = link_to "アイテム一覧", items_path, class: "dropdown-item"
+                = link_to "ステータス一覧", statuses_path, class: "dropdown-item"
+                = link_to "城塞データ一覧", fortress_all_data_path, class: "dropdown-item"
+                = link_to "城塞データ＋精算結果一覧", fortress_data_and_payoffs_path, class: "dropdown-item"
+                = link_to "お城構成データ一覧", castle_structures_path, class: "dropdown-item"
+                = link_to "精算結果一覧", payoffs_path, class: "dropdown-item"
+                .dropdown-divider
+                = link_to "城塞データ(抜粋)一覧", fortress_data_path, class: "dropdown-item"
+                = link_to "属性防御一覧", fortress_guards_path, class: "dropdown-item"
+                = link_to "城状況一覧", castle_condition_texts_path, class: "dropdown-item"
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ data: {bs: {:toggle =>"dropdown"}}, :href => "#", role: "button", area: {expanded: "false"}}
                 結果データ
                 %span.caret
-              %ul.dropdown-menu{"aria-labelledby" => "themes"}
-                %li= link_to "次回の組み合わせ一覧", next_battles_path
-                %li= link_to "マーケット一覧", markets_path
-                %li= link_to "多重購入一覧", multiple_buyings_path
-            %li
-            %li= link_to "眼鏡ｸｲｯ", acc_meganes_path
+              .dropdown-menu
+                = link_to "次回の組み合わせ一覧", next_battles_path, class: "dropdown-item"
+                = link_to "マーケット一覧", markets_path, class: "dropdown-item"
+                = link_to "多重購入一覧", multiple_buyings_path, class: "dropdown-item"
+            %li.nav-item= link_to "眼鏡ｸｲｯ", acc_meganes_path, class: "nav-link"
     .container
       .row
         .col-md-12
-          = bootstrap_flash
           = yield
       %footer
         %p

@@ -2,10 +2,10 @@
 %br/
 .col-lg-12
   .bs-component
-    %ul.breadcrumb{:style => "margin-bottom: 5px;"}
-      %li= link_to "累計眼鏡ｸｲｯ回数", acc_meganes_path
-      %li 眼鏡ｸｲｯ回数一覧(更新回別)
-      %li= link_to "眼鏡ｸｲｯ回数一覧(ページ別)", meganes_path
+    %ol.breadcrumb{:style => "margin-bottom: 5px;"}
+      %li.breadcrumb-item= link_to "累計眼鏡ｸｲｯ回数", acc_meganes_path
+      %li.breadcrumb-item.active 眼鏡ｸｲｯ回数一覧(更新回別)
+      %li.breadcrumb-item= link_to "眼鏡ｸｲｯ回数一覧(ページ別)", meganes_path
 %br/
 .bs-docs-section
   .row
